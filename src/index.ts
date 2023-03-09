@@ -2,13 +2,6 @@ import { TConnect } from "./types";
 import { usersDomain } from './domains/users';
 import { constants } from "./constants";
 
-export const sum = (a: number, b: number) => {
-  if ('development' === process.env.NODE_ENV) {
-    console.log('boop');
-  }
-  return a + b;
-};
-
 /**
  * 
  * @param token 
