@@ -13,13 +13,12 @@
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "vitest --passWithNoTests watch",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -32,7 +31,9 @@
     "trailingComma": "es5"
   },
   "name": "lmnsqzy",
-  "author": "https://twitter.com/0xreeko",
+  "author": "https://twitter.com/emergingtechguy",
+  "homepage": "https://github.com/0xreeko/lmnsqzy",
+  "bugs": "https://github.com/0xreeko/lmnsqzy/issues",
   "module": "dist/lmnsqzy.esm.js",
   "size-limit": [
     {
@@ -50,6 +51,7 @@
     "size-limit": "^8.2.4",
     "tsdx": "^0.14.1",
     "tslib": "^2.5.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "vitest": "^0.29.2"
   }
 }
