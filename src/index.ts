@@ -13,6 +13,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   /**
   * This function gets the currently authenticated user.
+  * Refer to: https://docs.lemonsqueezy.com/api/users
   * @returns a user object.
   */
   async function getUser(): Promise<GetUseResponse> {
