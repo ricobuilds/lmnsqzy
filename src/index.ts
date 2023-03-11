@@ -11,10 +11,10 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   if (token.split('').length < constants.TOKEN_LIMIT) throw Error("This doesn't seem like an authentic `lmnsqzy` API token. Check your naming variables, and try again.")
 
-   /**
-   * This function gets the currently authenticated user.
-   * @returns user object still.
-   */
+  /**
+  * This function gets the currently authenticated user.
+  * @returns user object still.
+  */
   async function getUser(): Promise<GetUseResponse> {
     let z = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
@@ -50,6 +50,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         getSubscription: () => ``,
         getSubscriptions: () => ``,
         cancelSubscription: () => ``,
+        getSubscriptionsInvoice: () => ``,
         getSubscriptionsInvoices: () => ``,
         createDiscount: () => ``,
         getDiscount: () => ``,
@@ -59,8 +60,8 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         getDiscountRedemptions: () => ``,
         getLicenseKey: () => ``,
         getLicenseKeys: () => ``,
-        getLicenseKeyInstances: () => ``,
         getLicenseKeyInstance: () => ``,
+        getLicenseKeyInstances: () => ``,
         createCheckout: () => ``,
         getCheckout: () => ``,
         getCheckouts: () => ``,
