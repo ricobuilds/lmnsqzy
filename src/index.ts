@@ -13,7 +13,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   /**
   * This function gets the currently authenticated user.
-  * @returns user object still.
+  * @returns a user object.
   */
   async function getUser(): Promise<GetUseResponse> {
     let z = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
