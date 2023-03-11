@@ -17,7 +17,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
   * @returns a user object.
   */
   async function getUser(): Promise<GetUseResponse> {
-    let z = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
@@ -25,8 +25,23 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       }
     });
 
-    return z.json() as Promise<GetUseResponse>
+    return r.json() as Promise<GetUseResponse>
   }
+
+  async function getStores(){}
+  async function getCustomers(){}
+  async function getProducts(){}
+  async function getVariants(){}
+  async function getFiles(){}
+  async function getOrders(){}
+  async function getOrderItems(){}
+  async function getSubscriptions(){}
+  async function getSubscriptionsInvoices(){}
+  async function getDiscounts(){}
+  async function getDiscountRedemptions(){}
+  async function getLicenseKeys(){}
+  async function getLicenseKeyInstances(){}
+  async function getCheckouts(){}
 
   return {
     lmnsqzy: (): TMethods => {
