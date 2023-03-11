@@ -1,1 +1,0 @@
-export const getUsers = () => `this is getUsers`
