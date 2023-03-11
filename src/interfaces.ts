@@ -12,13 +12,10 @@ export interface ILmnsqzyResponse<IData> {
 }
 
 export interface IError {
-    jsonapi: {
-        version: string
-    },
     errors: [
         {
             detail: string,
-            status: string | number,
+            status: string,
             title: string,
         }
     ]
