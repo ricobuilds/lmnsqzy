@@ -17,7 +17,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    */
   async function getUser(): Promise<GetUseResponse> {
     let z = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
         'Authorization': `Bearer ${token}`

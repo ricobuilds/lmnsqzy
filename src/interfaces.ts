@@ -8,6 +8,7 @@ export interface ILmnsqzyResponse<IData> {
         self: string
     },
     data: IData,
+    errors?: IError
 }
 
 export interface IError {

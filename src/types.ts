@@ -1,4 +1,4 @@
-import { ILmnsqzyResponse, IGetUser, IError } from './interfaces';
+import { ILmnsqzyResponse, IGetUser } from './interfaces';
 // desired input for each handler
 
 export type TMethods = {
@@ -68,4 +68,4 @@ export type TLmnsqzyFunctions = {
     doesWork: () => string;
 };
 
-export type GetUseResponse = Promise<ILmnsqzyResponse<IGetUser>> | IError
+export type GetUseResponse = Promise<ILmnsqzyResponse<IGetUser>>
