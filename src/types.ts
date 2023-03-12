@@ -1,3 +1,4 @@
+import { GetCustomersResponse } from './domains/customers';
 import { GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
@@ -26,7 +27,7 @@ export type TMethods = {
     /**
      * @returns a paginated list of customers.
      */
-    getCustomers: () => ``
+    getCustomers: () => Promise<GetCustomersResponse>
     // Products
     getProduct: () => ``
 
