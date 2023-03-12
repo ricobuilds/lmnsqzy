@@ -2,7 +2,7 @@ import { TMethods, TLmnsqzyFunctions } from './types';
 import { constants } from './constants';
 import fetch from 'node-fetch';
 import { GetUserResponse } from './domains/users';
-import { GetStoresResponse } from './domains/stores';
+import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetCustomersResponse } from './domains/customers';
 
 /**
@@ -33,8 +33,16 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetUserResponse>;
   }
 
-  async function getStore(): Promise<string> {
-    return ``;
+  async function getStore(id: string): Promise<GetStoreResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log(r)
+    return r.json() as GetStoreResponse;
   }
 
   /**
@@ -77,12 +85,23 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return ``;
   }
 
+  /**
+   * This handler gets a paginatated object of all your products.
+   * Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `products` objects, ordered by created_at field in descending order.
+   */
   async function getProducts(): Promise<string> {
     return ``;
   }
   async function getVariant(): Promise<string> {
     return ``;
   }
+
+  /**
+   * This handler gets a paginatated object of all your products.
+   * Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `variant` objects, ordered by created_at field in descending order.
+   */
   async function getVariants(): Promise<string> {
     return ``;
   }

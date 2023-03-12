@@ -1,5 +1,5 @@
 import { GetCustomersResponse } from './domains/customers';
-import { GetStoresResponse } from './domains/stores';
+import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
 export type TMethods = {
@@ -12,7 +12,7 @@ export type TMethods = {
   /**
    * @returns a store based on the given ID.
    */
-  getStore(): Promise<string>;
+  getStore(z: string): Promise<GetStoreResponse>;
 
   /**
    * @returns a paginated list of stores.
