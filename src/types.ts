@@ -1,4 +1,4 @@
-import { GetCustomersResponse } from './domains/customers';
+import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
@@ -17,17 +17,19 @@ export type TMethods = {
   /**
    * @returns a paginated list of stores.
    */
-  getStores: () => Promise<GetStoresResponse>;
+  getStores(): Promise<GetStoresResponse>;
 
   /**
-   * @returns a customer based on the given ID.
+   * 
+   * @param {string} z 
+   * @returns an object with the details of a customer based on the ID
    */
-  getCustomer(): Promise<string>;
+  getCustomer(z: string) : Promise<GetCustomerResponse>;
 
   /**
    * @returns a paginated list of customers.
    */
-  getCustomers: () => Promise<GetCustomersResponse>;
+  getCustomers(): Promise<GetCustomersResponse>;
   // Products
   getProduct(): Promise<string>;
 

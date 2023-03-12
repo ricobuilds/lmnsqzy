@@ -1,6 +1,6 @@
 import { domains } from '../../general';
 
-export interface IGetUser {
+export interface User {
   type: domains;
   id: string;
   attributes: {};

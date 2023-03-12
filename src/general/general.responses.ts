@@ -1,25 +1,15 @@
-export interface ILmnsqzyResponse<
-  IData,
-  ILinks = {
+export interface LmnsqzyResponse<
+  R,
+  L = {
     self: string;
   }
 > {
   jsonapi: {
     version: string;
   };
-  links: ILinks;
-  data: IData;
-  errors?: IError;
-}
-
-export interface ILmnsqzyMultiResponse<
-  IData,
-  ILinks = {
-    first: string;
-    last: string;
-  }
-> extends ILmnsqzyResponse<IData, ILinks> {
-  meta: {
+  links: L;
+  data: R | R[];
+  meta?: {
     page: {
       currentPage: number;
       from: number;
@@ -31,8 +21,15 @@ export interface ILmnsqzyMultiResponse<
   };
 }
 
-export interface IError {
+export interface LmnsqzyError {
+  jsonapi: {
+    version: string;
+  };
+  errors: ApiError
+}
+
+interface ApiError {
   detail: string;
   status: string;
   title: string;
-}
+};

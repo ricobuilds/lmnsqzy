@@ -1,4 +1,4 @@
-import { ILmnsqzyResponse } from '~general/general.responses';
-import { IGetUser } from './interface';
+import { LmnsqzyResponse, LmnsqzyError } from '~general/general.responses';
+import { User } from './interface';
 
-export type GetUserResponse = Promise<ILmnsqzyResponse<IGetUser>>;
+export type GetUserResponse = LmnsqzyResponse<User> | LmnsqzyError;

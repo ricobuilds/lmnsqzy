@@ -1,4 +1,5 @@
-import { IGetCustomer } from '~domains/customers/interface';
-import { ILmnsqzyMultiResponse } from '~general/general.responses';
+import { LmnsqzyResponse, LmnsqzyError } from '~general/general.responses';
+import { IGetCustomer } from './interface';
 
-export type GetCustomersResponse = Promise<ILmnsqzyMultiResponse<IGetCustomer>>;
+export type GetCustomerResponse = LmnsqzyResponse<IGetCustomer> | LmnsqzyError;
+export type GetCustomersResponse = LmnsqzyResponse<IGetCustomer[]> | LmnsqzyError;

@@ -1,6 +1,6 @@
 import { domains } from '~/general';
 
-export interface IGetStore<
+export interface Store<
   ILink = {
     self: string;
   }

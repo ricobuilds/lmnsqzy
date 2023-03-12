@@ -1,9 +1,10 @@
 import { TMethods, TLmnsqzyFunctions } from './types';
-import { constants } from './constants';
+import { constants, errorsTable } from './constants';
 import fetch from 'node-fetch';
 import { GetUserResponse } from './domains/users';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
-import { GetCustomersResponse } from './domains/customers';
+import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
+import { LmnsqzyError } from './general/general.responses';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -18,7 +19,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   /**
    * This handler gets the currently authenticated user.
-   * Refer to: https://docs.lemonsqueezy.com/api/users
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/users
    * @returns a user object.
    */
   async function getUser(): Promise<GetUserResponse> {
@@ -30,9 +31,20 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       },
     });
 
+    if (!r.ok) {
+      const err = await r.json() as LmnsqzyError
+      return err
+    }
+
     return r.json() as Promise<GetUserResponse>;
   }
 
+  /**
+  * This handler gets a store by the ID.
+  * @param {string} id the identifier of a store.
+  * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
+  * @returns a store object.
+  */
   async function getStore(id: string): Promise<GetStoreResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores/${id}`, {
       method: 'GET',
@@ -41,13 +53,23 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(r)
-    return r.json() as GetStoreResponse;
+
+    if (!r.ok) {
+      const errors: GetStoresResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetStoreResponse>;
   }
 
   /**
    * This handler gets a paginatated object of all your stores.
-   * Refer to: https://docs.lemonsqueezy.com/api/stores
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a set of `store` objects, ordered by name.
    */
   async function getStores(): Promise<GetStoresResponse> {
@@ -61,13 +83,37 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetStoresResponse>;
   }
 
-  async function getCustomer(): Promise<string> {
-    return ``;
+  /**
+   * This handler gets a paginatated object of all your stores.
+   * @param {string} id the identifier of a customer's prodfile.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a `customer` object.
+   */
+  async function getCustomer(id: string): Promise<GetCustomerResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/customers/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetStoresResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetCustomerResponse>
   }
 
   /**
    * This handler gets a paginatated object of all your customers.
-   * Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `customer` objects, ordered by created_at field in descending order.
    */
   async function getCustomers(): Promise<GetCustomersResponse> {
@@ -87,7 +133,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   /**
    * This handler gets a paginatated object of all your products.
-   * Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `products` objects, ordered by created_at field in descending order.
    */
   async function getProducts(): Promise<string> {
@@ -99,7 +145,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
   /**
    * This handler gets a paginatated object of all your products.
-   * Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `variant` objects, ordered by created_at field in descending order.
    */
   async function getVariants(): Promise<string> {

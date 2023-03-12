@@ -1,5 +1,5 @@
-import { ILmnsqzyResponse, ILmnsqzyMultiResponse } from '~general/general.responses';
-import { IGetStore } from './interface';
+import { LmnsqzyError, LmnsqzyResponse } from '~general/general.responses';
+import { Store } from './interface';
 
-export type GetStoreResponse = Promise<ILmnsqzyResponse<IGetStore>>;
-export type GetStoresResponse = Promise<ILmnsqzyMultiResponse<IGetStore>>;
+export type GetStoreResponse = LmnsqzyResponse<Store> | LmnsqzyError;
+export type GetStoresResponse = LmnsqzyResponse<Store[]> | LmnsqzyError;
