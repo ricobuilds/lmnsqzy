@@ -17,7 +17,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "lint:fix": "npm run lint -- --fix"
   },
   "husky": {
     "hooks": {
@@ -26,7 +27,7 @@
   },
   "prettier": {
     "printWidth": 80,
-    "semi": false,
+    "semi": true,
     "singleQuote": true,
     "trailingComma": "es5"
   },
