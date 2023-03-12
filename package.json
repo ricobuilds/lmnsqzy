@@ -36,7 +36,10 @@
   "author": "https://twitter.com/emergingtechguy",
   "homepage": "https://github.com/0xreeko/lmnsqzy",
   "bugs": "https://github.com/0xreeko/lmnsqzy/issues",
-  "keywords": ["typescript", "lemonsqueezy"],
+  "keywords": [
+    "typescript",
+    "lemonsqueezy"
+  ],
   "module": "dist/lmnsqzy.esm.js",
   "size-limit": [
     {
