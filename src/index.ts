@@ -29,9 +29,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
   }
 
   /**
-   * This handler gets the a paginatated object.
+   * This handler gets a paginatated object of all your stores.
    * Refer to: https://docs.lemonsqueezy.com/api/stores
-   * @returns a store object
+   * @returns a set of `store` objects, ordered by name.
    */
   async function getStores(): Promise<GetStoreResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores`, {
