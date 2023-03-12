@@ -1,6 +1,8 @@
-import { TMethods, TLmnsqzyFunctions, GetUserResponse, GetStoreResponse } from "./types";
+import { TMethods, TLmnsqzyFunctions } from "./types";
 import { constants } from "./constants";
 import fetch from 'node-fetch'
+import { GetUserResponse } from "./domains/users";
+import { GetStoreResponse } from "./domains/stores";
 
 /**
  * This function helps you connect to the API endpoints.

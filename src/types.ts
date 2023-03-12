@@ -1,5 +1,5 @@
-import { ILmnsqzyResponse, IGetUser, ILmnsqzyMultiResponse, IGetStore } from './interfaces';
-// desired input for each handler
+import { GetStoreResponse } from './domains/stores';
+import { GetUserResponse } from './domains/users';
 
 export type TMethods = {
     /**
@@ -128,5 +128,4 @@ export type TLmnsqzyFunctions = {
     doesWork: () => string;
 };
 
-export type GetUserResponse = Promise<ILmnsqzyResponse<IGetUser>>
-export type GetStoreResponse = Promise<ILmnsqzyMultiResponse<IGetStore>>
+
