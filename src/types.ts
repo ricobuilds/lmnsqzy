@@ -1,4 +1,4 @@
-import { ILmnsqzyResponse, IGetUser } from './interfaces';
+import { ILmnsqzyResponse, IGetUser, ILmnsqzyMultiResponse, IGetStore } from './interfaces';
 // desired input for each handler
 
 export type TMethods = {
@@ -6,7 +6,7 @@ export type TMethods = {
      * 
      * @returns the currently authenticated user.
      */
-    getUser(): Promise<GetUseResponse>
+    getUser(): Promise<GetUserResponse>
 
     /**
      * @returns a store based on the given ID.
@@ -16,7 +16,7 @@ export type TMethods = {
     /**
      * @returns a paginated list of stores.
      */
-    getStores: () => ``
+    getStores: () => Promise<GetStoreResponse>
     
     /**
      * @returns a customer based on the given ID.
@@ -128,4 +128,5 @@ export type TLmnsqzyFunctions = {
     doesWork: () => string;
 };
 
-export type GetUseResponse = Promise<ILmnsqzyResponse<IGetUser>>
+export type GetUserResponse = Promise<ILmnsqzyResponse<IGetUser>>
+export type GetStoreResponse = Promise<ILmnsqzyMultiResponse<IGetStore>>

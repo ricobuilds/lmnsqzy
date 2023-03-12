@@ -1,4 +1,4 @@
-import { TMethods, TLmnsqzyFunctions, GetUseResponse } from "./types";
+import { TMethods, TLmnsqzyFunctions, GetUserResponse, GetStoreResponse } from "./types";
 import { constants } from "./constants";
 import fetch from 'node-fetch'
 
@@ -12,11 +12,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
   if (token.split('').length < constants.TOKEN_LIMIT) throw Error("This doesn't seem like an authentic `lmnsqzy` API token. Check your naming variables, and try again.")
 
   /**
-  * This function gets the currently authenticated user.
+  * This handler gets the currently authenticated user.
   * Refer to: https://docs.lemonsqueezy.com/api/users
   * @returns a user object.
   */
-  async function getUser(): Promise<GetUseResponse> {
+  async function getUser(): Promise<GetUserResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
       headers: {
@@ -25,23 +25,37 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       }
     });
 
-    return r.json() as Promise<GetUseResponse>
+    return r.json() as Promise<GetUserResponse>
   }
 
-  async function getStores(){}
-  async function getCustomers(){}
-  async function getProducts(){}
-  async function getVariants(){}
-  async function getFiles(){}
-  async function getOrders(){}
-  async function getOrderItems(){}
-  async function getSubscriptions(){}
-  async function getSubscriptionsInvoices(){}
-  async function getDiscounts(){}
-  async function getDiscountRedemptions(){}
-  async function getLicenseKeys(){}
-  async function getLicenseKeyInstances(){}
-  async function getCheckouts(){}
+  /**
+   * This handler gets the a paginatated object.
+   * Refer to: https://docs.lemonsqueezy.com/api/stores
+   * @returns a store object
+   */
+  async function getStores(): Promise<GetStoreResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    return r.json() as Promise<GetStoreResponse>
+  }
+  async function getCustomers() { }
+  async function getProducts() { }
+  async function getVariants() { }
+  async function getFiles() { }
+  async function getOrders() { }
+  async function getOrderItems() { }
+  async function getSubscriptions() { }
+  async function getSubscriptionsInvoices() { }
+  async function getDiscounts() { }
+  async function getDiscountRedemptions() { }
+  async function getLicenseKeys() { }
+  async function getLicenseKeyInstances() { }
+  async function getCheckouts() { }
 
   return {
     lmnsqzy: (): TMethods => {
@@ -49,7 +63,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return {
         getUser,
         getStore: () => ``,
-        getStores: () => ``,
+        getStores,
         getCustomer: () => ``,
         getCustomers: () => ``,
         getProduct: () => ``,
