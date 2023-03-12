@@ -1,10 +1,10 @@
-import { domains } from "../../general"
+import { domains } from '../../general'
 
 export interface IGetUser {
-    type: domains
-    id: string
-    attributes: {}
-    links: {
-        self: string
-    }
+  type: domains
+  id: string
+  attributes: {}
+  links: {
+    self: string
+  }
 }

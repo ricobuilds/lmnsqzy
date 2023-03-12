@@ -1,9 +1,9 @@
-import { TMethods, TLmnsqzyFunctions } from "./types";
-import { constants } from "./constants";
+import { TMethods, TLmnsqzyFunctions } from './types'
+import { constants } from './constants'
 import fetch from 'node-fetch'
-import { GetUserResponse } from "./domains/users";
-import { GetStoresResponse } from "./domains/stores";
-import { GetCustomersResponse } from "./domains/customers";
+import { GetUserResponse } from './domains/users'
+import { GetStoresResponse } from './domains/stores'
+import { GetCustomersResponse } from './domains/customers'
 
 /**
  * This function helps you connect to the API endpoints.
@@ -11,27 +11,29 @@ import { GetCustomersResponse } from "./domains/customers";
  * @returns two objects `lmnsqzy` and `doesWork`.
  */
 export const connect = (token: string): TLmnsqzyFunctions => {
-
-  if (token.split('').length < constants.TOKEN_LIMIT) throw Error("This doesn't seem like an authentic `lmnsqzy` API token. Check your naming variables, and try again.")
+  if (token.split('').length < constants.TOKEN_LIMIT)
+    throw Error(
+      "This doesn't seem like an authentic `lmnsqzy` API token. Check your naming variables, and try again."
+    )
 
   /**
-  * This handler gets the currently authenticated user.
-  * Refer to: https://docs.lemonsqueezy.com/api/users
-  * @returns a user object.
-  */
+   * This handler gets the currently authenticated user.
+   * Refer to: https://docs.lemonsqueezy.com/api/users
+   * @returns a user object.
+   */
   async function getUser(): Promise<GetUserResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    });
+        Authorization: `Bearer ${token}`,
+      },
+    })
 
     return r.json() as Promise<GetUserResponse>
   }
 
-  async function getStore(): Promise<string>{
+  async function getStore(): Promise<string> {
     return ``
   }
 
@@ -45,13 +47,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
     return r.json() as Promise<GetStoresResponse>
   }
 
-  async function getCustomer(): Promise<string>{
+  async function getCustomer(): Promise<string> {
     return ``
   }
 
@@ -65,72 +67,103 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     })
     return r.json() as Promise<GetCustomersResponse>
   }
 
-  async function getProduct(): Promise<string>{
+  async function getProduct(): Promise<string> {
     return ``
   }
 
-  async function getProducts(): Promise<string> { return `` }
-  async function getVariant(): Promise<string>{
+  async function getProducts(): Promise<string> {
     return ``
   }
-  async function getVariants(): Promise<string> { return ``}
-  async function getFile(): Promise<string>{
+  async function getVariant(): Promise<string> {
     return ``
   }
-  async function getFiles(): Promise<string> { return ``}
-  async function getOrder(): Promise<string>{
+  async function getVariants(): Promise<string> {
     return ``
   }
-  async function getOrders(): Promise<string> { return ``}
-  async function getOrderItem(): Promise<string>{
+  async function getFile(): Promise<string> {
     return ``
   }
-  async function getOrderItems(): Promise<string> { return ``}
-  async function updateSubscription(): Promise<string>{
+  async function getFiles(): Promise<string> {
     return ``
   }
-  async function getSubscription(): Promise<string>{
+  async function getOrder(): Promise<string> {
     return ``
   }
-  async function getSubscriptions(): Promise<string> { return ``}
-  async function cancelSubscription(): Promise<string>{
+  async function getOrders(): Promise<string> {
     return ``
   }
-  async function getSubscriptionsInvoice(): Promise<string>{
+  async function getOrderItem(): Promise<string> {
     return ``
   }
-  async function getSubscriptionsInvoices(): Promise<string> { return ``}
-  async function getDiscount(): Promise<string>{
+  async function getOrderItems(): Promise<string> {
     return ``
   }
-  async function createDiscount(): Promise<string>{
+  async function updateSubscription(): Promise<string> {
     return ``
   }
-  async function deleteDiscount(): Promise<string>{
+  async function getSubscription(): Promise<string> {
     return ``
   }
-  async function getDiscounts(): Promise<string> { return ``}
-  async function getDiscountRedemption(): Promise<string>{
+  async function getSubscriptions(): Promise<string> {
     return ``
   }
-  async function getDiscountRedemptions(): Promise<string> { return ``}
-  async function getLicenseKey(): Promise<string> { return ``}
-  async function getLicenseKeys(): Promise<string> { return ``}
-  async function getLicenseKeyInstance(): Promise<string> { return ``}
-  async function getLicenseKeyInstances(): Promise<string> { return ``}
-  async function createCheckout(): Promise<string> { return ``}
-  async function getCheckout(): Promise<string> { return ``}
-  async function getCheckouts(): Promise<string> { return ``}
+  async function cancelSubscription(): Promise<string> {
+    return ``
+  }
+  async function getSubscriptionsInvoice(): Promise<string> {
+    return ``
+  }
+  async function getSubscriptionsInvoices(): Promise<string> {
+    return ``
+  }
+  async function getDiscount(): Promise<string> {
+    return ``
+  }
+  async function createDiscount(): Promise<string> {
+    return ``
+  }
+  async function deleteDiscount(): Promise<string> {
+    return ``
+  }
+  async function getDiscounts(): Promise<string> {
+    return ``
+  }
+  async function getDiscountRedemption(): Promise<string> {
+    return ``
+  }
+  async function getDiscountRedemptions(): Promise<string> {
+    return ``
+  }
+  async function getLicenseKey(): Promise<string> {
+    return ``
+  }
+  async function getLicenseKeys(): Promise<string> {
+    return ``
+  }
+  async function getLicenseKeyInstance(): Promise<string> {
+    return ``
+  }
+  async function getLicenseKeyInstances(): Promise<string> {
+    return ``
+  }
+  async function createCheckout(): Promise<string> {
+    return ``
+  }
+  async function getCheckout(): Promise<string> {
+    return ``
+  }
+  async function getCheckouts(): Promise<string> {
+    return ``
+  }
 
   return {
     lmnsqzy: (): TMethods => {
-
       return {
         getUser,
         getStore,
@@ -167,12 +200,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         getCheckout,
         getCheckouts,
       }
-
     },
     /**
-     * 
+     *
      * @returns a string still1
      */
-    doesWork: () => `it works!`
+    doesWork: () => `it works!`,
   }
 }
