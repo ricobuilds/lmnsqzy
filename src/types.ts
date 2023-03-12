@@ -12,7 +12,7 @@ export type TMethods = {
     /**
      * @returns a store based on the given ID.
      */
-    getStore: () => ``
+    getStore(): Promise<string>
 
     /**
      * @returns a paginated list of stores.
@@ -22,100 +22,100 @@ export type TMethods = {
     /**
      * @returns a customer based on the given ID.
      */
-    getCustomer: () => ``
+    getCustomer(): Promise<string>
 
     /**
      * @returns a paginated list of customers.
      */
     getCustomers: () => Promise<GetCustomersResponse>
     // Products
-    getProduct: () => ``
+    getProduct(): Promise<string>
 
     /**
      * @returns a paginated list of products.
      */
-    getProducts: () => ``
+    getProducts(): Promise<string>
     // Variants
-    getVariant: () => ``
+    getVariant(): Promise<string>
 
     /**
      * @returns a paginated list of variants.
      */
-    getVariants: () => ``
+    getVariants(): Promise<string>
     // Files
-    getFile: () => ``
+    getFile(): Promise<string>
 
     /**
      * @returns a paginated list of files.
      */
-    getFiles: () => ``
+    getFiles(): Promise<string>
     // Orders
-    getOrder: () => ``
+    getOrder(): Promise<string>
 
     /**
      * @returns a paginated list of order.
      */
-    getOrders: () => ``
+    getOrders(): Promise<string>
     // Order Items
-    getOrderItem: () => ``
+    getOrderItem(): Promise<string>
 
     /**
      * @returns a paginated list of order items.
      */
-    getOrderItems: () => ``
+    getOrderItems(): Promise<string>
 
-    updateSubscription: () => ``
-    getSubscription: () => ``
+    updateSubscription(): Promise<string>
+    getSubscription(): Promise<string>
 
     /**
      * @returns a paginated list of subscriptions.
      */
-    getSubscriptions: () => ``
-    cancelSubscription: () => ``
+    getSubscriptions(): Promise<string>
+    cancelSubscription(): Promise<string>
     
-    getSubscriptionsInvoice: () => ``
+    getSubscriptionsInvoice(): Promise<string>
     /**
      * @returns a paginated list of order items.
      */
-    getSubscriptionsInvoices: () => ``
+    getSubscriptionsInvoices(): Promise<string>
     // Discounts
-    createDiscount: () => ``
-    getDiscount: () => ``
-    deleteDiscount: () => ``
+    createDiscount(): Promise<string>
+    getDiscount(): Promise<string>
+    deleteDiscount(): Promise<string>
 
     /**
      * @returns a paginated list of discounts.
      */
-    getDiscounts: () => ``
+    getDiscounts(): Promise<string>
     // Discount Redemptions
-    getDiscountRedemption: () => ``
+    getDiscountRedemption(): Promise<string>
 
     /**
      * @returns a paginated list of discount redemptions.
      */
-    getDiscountRedemptions: () => ``
+    getDiscountRedemptions(): Promise<string>
     // License Keys
-    getLicenseKey: () => ``
+    getLicenseKey(): Promise<string>
 
     /**
      * @returns a paginated list of license keys.
      */
-    getLicenseKeys: () => ``
+    getLicenseKeys(): Promise<string>
     // License Keys Instances
-    getLicenseKeyInstance: () => ``
+    getLicenseKeyInstance(): Promise<string>
 
     /**
      * @returns a paginated list of license key instances.
      */
-    getLicenseKeyInstances: () => ``
+    getLicenseKeyInstances(): Promise<string>
     // Checkouts
-    createCheckout: () => ``
-    getCheckout: () => ``
+    createCheckout(): Promise<string>
+    getCheckout(): Promise<string>
 
     /**
      * @returns a paginated list of checkouts.
      */
-    getCheckouts: () => ``
+    getCheckouts(): Promise<string>
 }
 
 export type TLmnsqzyFunctions = {

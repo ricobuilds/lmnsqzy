@@ -31,6 +31,10 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetUserResponse>
   }
 
+  async function getStore(): Promise<string>{
+    return ``
+  }
+
   /**
    * This handler gets a paginatated object of all your stores.
    * Refer to: https://docs.lemonsqueezy.com/api/stores
@@ -45,6 +49,10 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       }
     })
     return r.json() as Promise<GetStoresResponse>
+  }
+
+  async function getCustomer(): Promise<string>{
+    return ``
   }
 
   /**
@@ -62,57 +70,102 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
     return r.json() as Promise<GetCustomersResponse>
   }
-  async function getProducts() { }
-  async function getVariants() { }
-  async function getFiles() { }
-  async function getOrders() { }
-  async function getOrderItems() { }
-  async function getSubscriptions() { }
-  async function getSubscriptionsInvoices() { }
-  async function getDiscounts() { }
-  async function getDiscountRedemptions() { }
-  async function getLicenseKeys() { }
-  async function getLicenseKeyInstances() { }
-  async function getCheckouts() { }
+
+  async function getProduct(): Promise<string>{
+    return ``
+  }
+
+  async function getProducts(): Promise<string> { return `` }
+  async function getVariant(): Promise<string>{
+    return ``
+  }
+  async function getVariants(): Promise<string> { return ``}
+  async function getFile(): Promise<string>{
+    return ``
+  }
+  async function getFiles(): Promise<string> { return ``}
+  async function getOrder(): Promise<string>{
+    return ``
+  }
+  async function getOrders(): Promise<string> { return ``}
+  async function getOrderItem(): Promise<string>{
+    return ``
+  }
+  async function getOrderItems(): Promise<string> { return ``}
+  async function updateSubscription(): Promise<string>{
+    return ``
+  }
+  async function getSubscription(): Promise<string>{
+    return ``
+  }
+  async function getSubscriptions(): Promise<string> { return ``}
+  async function cancelSubscription(): Promise<string>{
+    return ``
+  }
+  async function getSubscriptionsInvoice(): Promise<string>{
+    return ``
+  }
+  async function getSubscriptionsInvoices(): Promise<string> { return ``}
+  async function getDiscount(): Promise<string>{
+    return ``
+  }
+  async function createDiscount(): Promise<string>{
+    return ``
+  }
+  async function deleteDiscount(): Promise<string>{
+    return ``
+  }
+  async function getDiscounts(): Promise<string> { return ``}
+  async function getDiscountRedemption(): Promise<string>{
+    return ``
+  }
+  async function getDiscountRedemptions(): Promise<string> { return ``}
+  async function getLicenseKey(): Promise<string> { return ``}
+  async function getLicenseKeys(): Promise<string> { return ``}
+  async function getLicenseKeyInstance(): Promise<string> { return ``}
+  async function getLicenseKeyInstances(): Promise<string> { return ``}
+  async function createCheckout(): Promise<string> { return ``}
+  async function getCheckout(): Promise<string> { return ``}
+  async function getCheckouts(): Promise<string> { return ``}
 
   return {
     lmnsqzy: (): TMethods => {
 
       return {
         getUser,
-        getStore: () => ``,
+        getStore,
         getStores,
-        getCustomer: () => ``,
+        getCustomer,
         getCustomers,
-        getProduct: () => ``,
-        getProducts: () => ``,
-        getVariant: () => ``,
-        getVariants: () => ``,
-        getFile: () => ``,
-        getFiles: () => ``,
-        getOrder: () => ``,
-        getOrders: () => ``,
-        getOrderItem: () => ``,
-        getOrderItems: () => ``,
-        updateSubscription: () => ``,
-        getSubscription: () => ``,
-        getSubscriptions: () => ``,
-        cancelSubscription: () => ``,
-        getSubscriptionsInvoice: () => ``,
-        getSubscriptionsInvoices: () => ``,
-        createDiscount: () => ``,
-        getDiscount: () => ``,
-        deleteDiscount: () => ``,
-        getDiscounts: () => ``,
-        getDiscountRedemption: () => ``,
-        getDiscountRedemptions: () => ``,
-        getLicenseKey: () => ``,
-        getLicenseKeys: () => ``,
-        getLicenseKeyInstance: () => ``,
-        getLicenseKeyInstances: () => ``,
-        createCheckout: () => ``,
-        getCheckout: () => ``,
-        getCheckouts: () => ``,
+        getProduct,
+        getProducts,
+        getVariant,
+        getVariants,
+        getFile,
+        getFiles,
+        getOrder,
+        getOrders,
+        getOrderItem,
+        getOrderItems,
+        updateSubscription,
+        getSubscription,
+        getSubscriptions,
+        cancelSubscription,
+        getSubscriptionsInvoice,
+        getSubscriptionsInvoices,
+        createDiscount,
+        getDiscount,
+        deleteDiscount,
+        getDiscounts,
+        getDiscountRedemption,
+        getDiscountRedemptions,
+        getLicenseKey,
+        getLicenseKeys,
+        getLicenseKeyInstance,
+        getLicenseKeyInstances,
+        createCheckout,
+        getCheckout,
+        getCheckouts,
       }
 
     },
