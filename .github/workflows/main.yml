@@ -1,32 +1,64 @@
 name: CI
 on: [push]
 jobs:
-  build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        node: ['10.x', '12.x', '14.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
+  lint:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Use Node ${{ matrix.node }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node }}
+      - name: Use Node
+        uses: actions/setup-node@v3
 
-      - name: Install deps and build (with cache)
+      - name: Use NPM install
         uses: bahmutov/npm-install@v1
+        with:
+          node-version: 16
+
+      - name: Install
+        run: yarn install
 
       - name: Lint
         run: yarn lint
 
+  test:
+    runs-on: ubuntu-latest
+    needs: [lint]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+
+      - name: Use NPM install
+        uses: bahmutov/npm-install@v1
+        with:
+          node-version: 16
+
+      - name: Install
+        run: yarn install
+
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [test]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Use Node
+        uses: actions/setup-node@v3
+
+      - name: Use NPM install
+        uses: bahmutov/npm-install@v1
+        with:
+          node-version: 16
+
+      - name: Install
+        run: yarn install
 
       - name: Build
         run: yarn build
