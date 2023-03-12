@@ -1,130 +1,130 @@
-import { GetCustomersResponse } from './domains/customers'
-import { GetStoresResponse } from './domains/stores'
-import { GetUserResponse } from './domains/users'
+import { GetCustomersResponse } from './domains/customers';
+import { GetStoresResponse } from './domains/stores';
+import { GetUserResponse } from './domains/users';
 
 export type TMethods = {
   /**
    *
    * @returns the currently authenticated user.
    */
-  getUser(): Promise<GetUserResponse>
+  getUser(): Promise<GetUserResponse>;
 
   /**
    * @returns a store based on the given ID.
    */
-  getStore(): Promise<string>
+  getStore(): Promise<string>;
 
   /**
    * @returns a paginated list of stores.
    */
-  getStores: () => Promise<GetStoresResponse>
+  getStores: () => Promise<GetStoresResponse>;
 
   /**
    * @returns a customer based on the given ID.
    */
-  getCustomer(): Promise<string>
+  getCustomer(): Promise<string>;
 
   /**
    * @returns a paginated list of customers.
    */
-  getCustomers: () => Promise<GetCustomersResponse>
+  getCustomers: () => Promise<GetCustomersResponse>;
   // Products
-  getProduct(): Promise<string>
+  getProduct(): Promise<string>;
 
   /**
    * @returns a paginated list of products.
    */
-  getProducts(): Promise<string>
+  getProducts(): Promise<string>;
   // Variants
-  getVariant(): Promise<string>
+  getVariant(): Promise<string>;
 
   /**
    * @returns a paginated list of variants.
    */
-  getVariants(): Promise<string>
+  getVariants(): Promise<string>;
   // Files
-  getFile(): Promise<string>
+  getFile(): Promise<string>;
 
   /**
    * @returns a paginated list of files.
    */
-  getFiles(): Promise<string>
+  getFiles(): Promise<string>;
   // Orders
-  getOrder(): Promise<string>
+  getOrder(): Promise<string>;
 
   /**
    * @returns a paginated list of order.
    */
-  getOrders(): Promise<string>
+  getOrders(): Promise<string>;
   // Order Items
-  getOrderItem(): Promise<string>
+  getOrderItem(): Promise<string>;
 
   /**
    * @returns a paginated list of order items.
    */
-  getOrderItems(): Promise<string>
+  getOrderItems(): Promise<string>;
 
-  updateSubscription(): Promise<string>
-  getSubscription(): Promise<string>
+  updateSubscription(): Promise<string>;
+  getSubscription(): Promise<string>;
 
   /**
    * @returns a paginated list of subscriptions.
    */
-  getSubscriptions(): Promise<string>
-  cancelSubscription(): Promise<string>
+  getSubscriptions(): Promise<string>;
+  cancelSubscription(): Promise<string>;
 
-  getSubscriptionsInvoice(): Promise<string>
+  getSubscriptionsInvoice(): Promise<string>;
   /**
    * @returns a paginated list of order items.
    */
-  getSubscriptionsInvoices(): Promise<string>
+  getSubscriptionsInvoices(): Promise<string>;
   // Discounts
-  createDiscount(): Promise<string>
-  getDiscount(): Promise<string>
-  deleteDiscount(): Promise<string>
+  createDiscount(): Promise<string>;
+  getDiscount(): Promise<string>;
+  deleteDiscount(): Promise<string>;
 
   /**
    * @returns a paginated list of discounts.
    */
-  getDiscounts(): Promise<string>
+  getDiscounts(): Promise<string>;
   // Discount Redemptions
-  getDiscountRedemption(): Promise<string>
+  getDiscountRedemption(): Promise<string>;
 
   /**
    * @returns a paginated list of discount redemptions.
    */
-  getDiscountRedemptions(): Promise<string>
+  getDiscountRedemptions(): Promise<string>;
   // License Keys
-  getLicenseKey(): Promise<string>
+  getLicenseKey(): Promise<string>;
 
   /**
    * @returns a paginated list of license keys.
    */
-  getLicenseKeys(): Promise<string>
+  getLicenseKeys(): Promise<string>;
   // License Keys Instances
-  getLicenseKeyInstance(): Promise<string>
+  getLicenseKeyInstance(): Promise<string>;
 
   /**
    * @returns a paginated list of license key instances.
    */
-  getLicenseKeyInstances(): Promise<string>
+  getLicenseKeyInstances(): Promise<string>;
   // Checkouts
-  createCheckout(): Promise<string>
-  getCheckout(): Promise<string>
+  createCheckout(): Promise<string>;
+  getCheckout(): Promise<string>;
 
   /**
    * @returns a paginated list of checkouts.
    */
-  getCheckouts(): Promise<string>
-}
+  getCheckouts(): Promise<string>;
+};
 
 export type TLmnsqzyFunctions = {
   /**
    * a collection of handlers to interact with the LMNSQZY API
    */
-  lmnsqzy: () => TMethods
+  lmnsqzy: () => TMethods;
   /**
    * a dummy string for showing that it works.
    */
-  doesWork: () => string
-}
+  doesWork: () => string;
+};

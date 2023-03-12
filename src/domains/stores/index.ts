@@ -1,4 +1,4 @@
-import { ILmnsqzyMultiResponse } from '~general/general.responses'
-import { IGetStore } from './interface'
+import { ILmnsqzyMultiResponse } from '~general/general.responses';
+import { IGetStore } from './interface';
 
-export type GetStoresResponse = Promise<ILmnsqzyMultiResponse<IGetStore>>
+export type GetStoresResponse = Promise<ILmnsqzyMultiResponse<IGetStore>>;

@@ -16,4 +16,4 @@ export type domains =
   | 'discount-redemptions'
   | 'license-keys'
   | 'license-key-instances'
-  | 'checkouts'
+  | 'checkouts';

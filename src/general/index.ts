@@ -1,1 +1,1 @@
-export { domains } from './general.domains'
+export { domains } from './general.domains';
