@@ -1,4 +1,4 @@
-import { domains } from "../../general"
+import { domains } from "~/general"
 
 export interface IGetStore<ILink = {
     self: string
