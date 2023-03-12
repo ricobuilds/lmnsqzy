@@ -40,7 +40,7 @@ jobs:
         run: yarn install
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: yarn vitest --ci --coverage --maxWorkers=2
 
   build:
     runs-on: ubuntu-latest
