@@ -1,19 +1,5 @@
-// desired output for each handler
-type domains = 'users'
-    | 'stores'
-    | 'customers'
-    | 'products'
-    | 'variants'
-    | 'files'
-    | 'orders'
-    | 'order-items'
-    | 'subscriptions'
-    | 'subscription-invoices'
-    | 'discounts'
-    | 'discount-redemptions'
-    | 'license-keys'
-    | 'license-key-instances'
-    | 'checkouts';
+import { domains } from "./general"
+
 
 export interface ILmnsqzyResponse<IData, ILinks = {
     self: string
