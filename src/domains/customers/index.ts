@@ -1,4 +1,4 @@
-import { IGetCustomers } from "~domains/customers/interface"
+import { IGetCustomer } from "~domains/customers/interface"
 import { ILmnsqzyMultiResponse } from "~general/general.responses"
 
-export type GetCustomersResponse = Promise<ILmnsqzyMultiResponse<IGetCustomers>>
+export type GetCustomersResponse = Promise<ILmnsqzyMultiResponse<IGetCustomer>>
