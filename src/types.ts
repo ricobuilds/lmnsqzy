@@ -1,4 +1,4 @@
-import { GetStoreResponse } from './domains/stores';
+import { GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
 export type TMethods = {
@@ -16,7 +16,7 @@ export type TMethods = {
     /**
      * @returns a paginated list of stores.
      */
-    getStores: () => Promise<GetStoreResponse>
+    getStores: () => Promise<GetStoresResponse>
     
     /**
      * @returns a customer based on the given ID.

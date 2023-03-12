@@ -2,7 +2,7 @@ import { TMethods, TLmnsqzyFunctions } from "./types";
 import { constants } from "./constants";
 import fetch from 'node-fetch'
 import { GetUserResponse } from "./domains/users";
-import { GetStoreResponse } from "./domains/stores";
+import { GetStoresResponse } from "./domains/stores";
 
 /**
  * This function helps you connect to the API endpoints.
@@ -35,7 +35,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a set of `store` objects, ordered by name.
    */
-  async function getStores(): Promise<GetStoreResponse> {
+  async function getStores(): Promise<GetStoresResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores`, {
       method: 'GET',
       headers: {
@@ -43,7 +43,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         'Authorization': `Bearer ${token}`
       }
     })
-    return r.json() as Promise<GetStoreResponse>
+    return r.json() as Promise<GetStoresResponse>
   }
   async function getCustomers() { }
   async function getProducts() { }
