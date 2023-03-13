@@ -2,6 +2,7 @@ import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
+import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
 export type TMethods = {
   /**
@@ -43,12 +44,12 @@ export type TMethods = {
    */
   getProducts(): Promise<GetProductsResponse>;
   // Variants
-  getVariant(): Promise<string>;
+  getVariant(id: string): Promise<GetVariantResponse>;
 
   /**
    * @returns a paginated list of variants.
    */
-  getVariants(): Promise<string>;
+  getVariants(): Promise<GetVariantsResponse>;
   // Files
   getFile(): Promise<string>;
 
