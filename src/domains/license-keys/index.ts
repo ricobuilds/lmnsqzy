@@ -1,5 +1,5 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { LicenseKey } from './interface';
 
-export type GetLicenseKeyResponse = LmnsqzyResponse<LicenseKey> | LmnsqzyError;
-export type GetLicenseKeysResponse = LmnsqzyResponse<LicenseKey> | LmnsqzyError;
+export interface GetLicenseKeyResponse extends LmnsqzyResponse<LicenseKey> {};
+export interface GetLicenseKeysResponse extends LmnsqzyResponse<LicenseKey> {};
