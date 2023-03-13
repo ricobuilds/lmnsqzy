@@ -15,13 +15,17 @@ export interface File {
     created_at: string;
     updated_at: string;
   };
-  relationships: {
-    variants: {
-      related: string;
-      self: string;
-    };
-  };
+  relationships: Relationships
   links: {
     self: string;
   };
+}
+
+interface Relationships<Links = {
+  links: {
+    related: string
+    self: string
+  }
+}> {
+  variants: Links
 }
