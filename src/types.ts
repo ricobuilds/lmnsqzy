@@ -194,7 +194,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `subscription invoice` object.
    */
-  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse>;
+  getSubscriptionInvoice<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your subscription invoices.
