@@ -88,7 +88,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a product objects.
    */
-  getProduct(id: string): Promise<GetProductRespense>;
+  getProduct<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your products.
