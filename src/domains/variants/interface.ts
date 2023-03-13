@@ -32,15 +32,17 @@ export interface Variant {
     created_at: string;
     updated_at: string;
   };
-  relationships: {
-    product: {
-      links: {
-        related: string;
-        self: string;
-      };
-    };
-  };
+  relationships: Relationships;
   links: {
     self: string;
   };
+}
+
+interface Relationships<Links = {
+  links: {
+    related: string
+    self: string
+  }
+}> {
+  product: Links
 }
