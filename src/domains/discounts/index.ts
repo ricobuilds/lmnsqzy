@@ -1,10 +1,10 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { Discount } from './interface';
 
-export type CreateDiscountResponse = LmnsqzyResponse<Discount> | LmnsqzyError;
-export type GetDiscountResponse = LmnsqzyResponse<Discount> | LmnsqzyError;
-export type DeleteDiscountResponse = LmnsqzyResponse<Discount> | LmnsqzyError;
-export type GetDiscountsResponse = LmnsqzyResponse<Discount> | LmnsqzyError;
+export interface CreateDiscountResponse extends LmnsqzyResponse<Discount> {};
+export interface GetDiscountResponse extends LmnsqzyResponse<Discount> {};
+export interface DeleteDiscountResponse extends LmnsqzyResponse<Discount> {};
+export interface GetDiscountsResponse extends LmnsqzyResponse<Discount> {};
 
 export interface DiscountOptions {
   name: string

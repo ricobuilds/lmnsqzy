@@ -13,6 +13,11 @@ export const errorsTable: {
     title: string;
   };
 } = {
+  204: {
+    status: '204',
+    title: 'No Content',
+    detail: 'Removal of discount was successful.'
+  },
   400: {
     status: '400',
     title: 'Bad Request',

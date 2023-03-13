@@ -7,8 +7,8 @@ export interface LmnsqzyResponse<
   jsonapi: {
     version: string;
   };
-  links: L;
-  data: R | R[];
+  links?: L;
+  data?: R | R[];
   meta?: {
     page: {
       currentPage: number;
@@ -19,6 +19,7 @@ export interface LmnsqzyResponse<
       total: number;
     };
   };
+  errors?: ApiError
 }
 
 export interface LmnsqzyError {

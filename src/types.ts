@@ -164,14 +164,14 @@ export type TMethods = {
   /**
    * @returns a paginated list of checkouts.
    */
-  getCheckouts(): Promise<GetCheckoutsResponse>;
+  getCheckouts: () => Promise<GetCheckoutsResponse>;
 };
 
 export type TLmnsqzyFunctions = {
   /**
    * a collection of handlers to interact with the LMNSQZY API
    */
-  lmnsqzy: () => TMethods;
+  lmnsqzy:() =>  TMethods;
   /**
    * a dummy string for showing that it works.
    */

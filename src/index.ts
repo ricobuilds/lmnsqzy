@@ -98,7 +98,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetStoresResponse = {
+      const errors: GetStoreResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -142,7 +142,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetStoresResponse = {
+      const errors: GetCustomerResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -213,7 +213,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
+      const errors: GetProductsResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -241,7 +241,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
+      const errors: GetVariantResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -268,7 +268,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
+      const errors: GetVariantsResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -290,7 +290,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
+      const errors: GetFileResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -374,7 +374,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetOrderResponse = {
+      const errors: GetOrderItemResponse = {
         jsonapi: {
           version: '1.0',
         },
@@ -783,9 +783,8 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyInstanceResponse>;
   }
-  async function getLicenseKeyInstances(): Promise<
-    GetLicenseKeyInstancesResponse
-  > {
+
+  async function getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances`,
       {
@@ -873,10 +872,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetCheckoutsResponse>;
   }
 
-  return {
-    lmnsqzy: (): TMethods => {
-      return {
-        getUser,
+
+  const lmnsqzy = (): TMethods => ({
+      getUser,
         getStore,
         getStores,
         getCustomer,
@@ -910,12 +908,10 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         createCheckout,
         getCheckout,
         getCheckouts,
-      };
-    },
-    /**
-     *
-     * @returns a string still1
-     */
-    doesWork: () => `it works!`,
-  };
+    })
+   
+  return {
+    doesWork: () => 'it works!',
+    lmnsqzy
+  }
 };
