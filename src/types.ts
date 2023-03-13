@@ -293,7 +293,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  getCheckout(id: string): Promise<GetCheckoutResponse>;
+  getCheckout<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your custom checkouts.
