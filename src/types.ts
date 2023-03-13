@@ -277,7 +277,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `license key instances` objects, ordered by created_at field in descending order.
    */
-  getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse>;
+  getLicenseKeyInstances<R>(): Promise<R>;
 
   /**
    * This handler creates a custom checkout.
