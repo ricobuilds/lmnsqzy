@@ -12,8 +12,8 @@ export interface File {
     version: string;
     sort: number;
     status: string;
-    created_at: string;
-    updated_at: string;
+    'createdAt': string;
+    'updatedAt': string;
   };
   relationships: Relationships
   links: {
