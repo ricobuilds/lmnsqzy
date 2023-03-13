@@ -209,7 +209,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  createDiscount(options: DiscountOptions): Promise<CreateDiscountResponse>;
+  createDiscount<R>(options: DiscountOptions): Promise<R>;
 
   /**
    * This handler gets a discount by the ID.
