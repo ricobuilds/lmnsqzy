@@ -1,9 +1,5 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { SubscriptionInvoice } from './interface';
 
-export type GetSubscriptionInvoiceResponse =
-  | LmnsqzyResponse<SubscriptionInvoice>
-  | LmnsqzyError;
-export type GetSubscriptionInvoicesResponse =
-  | LmnsqzyResponse<SubscriptionInvoice[]>
-  | LmnsqzyError;
+export interface GetSubscriptionInvoiceResponse extends LmnsqzyResponse<SubscriptionInvoice> {};
+export interface GetSubscriptionInvoicesResponse extends LmnsqzyResponse<SubscriptionInvoice[]> {};
