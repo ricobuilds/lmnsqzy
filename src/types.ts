@@ -73,7 +73,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a `customer` object.
    */
-  getCustomer(id: string): Promise<GetCustomerResponse>;
+  getCustomer<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your customers.
