@@ -10,4 +10,13 @@ export interface LicenseKeyInstance {
         "created_at": string,
         "updated_at": string
     },
+    relationships: {
+        'license-key': {
+            related: string
+            self: string
+        }
+    }
+    links: {
+        self: string
+    }
 }
