@@ -4,6 +4,7 @@ import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-ite
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
+import { UpdateSubscription } from './domains/subscriptions';
 import { GetUserResponse } from './domains/users';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
@@ -75,7 +76,7 @@ export type TMethods = {
    */
   getOrderItems(): Promise<GetOrderItemsResponse>;
 
-  updateSubscription(): Promise<string>;
+  updateSubscription(id: string): Promise<UpdateSubscription>;
   getSubscription(): Promise<string>;
 
   /**

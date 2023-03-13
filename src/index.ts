@@ -10,6 +10,7 @@ import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
+import { UpdateSubscription } from './domains/subscriptions';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -347,7 +348,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     
     return r.json() as Promise<GetOrderItemResponse>;
   }
-  
+
   async function getOrderItems(): Promise<GetOrderItemsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items`, {
       method: 'GET',
@@ -370,8 +371,26 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetOrderItemsResponse>;
   }
 
-  async function updateSubscription(): Promise<string> {
-    return ``;
+  async function updateSubscription(id: string): Promise<UpdateSubscription> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
+      method: 'PATCH',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetOrderItemsResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<UpdateSubscription>
   }
   async function getSubscription(): Promise<string> {
     return ``;
