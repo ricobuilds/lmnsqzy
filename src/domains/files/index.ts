@@ -1,5 +1,5 @@
-import { LmnsqzyResponse, LmnsqzyError } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { File } from './interface';
 
-export type GetFileResponse = LmnsqzyResponse<File> | LmnsqzyError;
-export type GetFilesResponse = LmnsqzyResponse<File[]> | LmnsqzyError;
+export interface GetFileResponse extends LmnsqzyResponse<File> {};
+export interface GetFilesResponse extends LmnsqzyResponse<File[]> {};
