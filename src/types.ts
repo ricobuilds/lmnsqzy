@@ -1,4 +1,4 @@
-import { CreateCheckoutResponse, GetCheckoutResponse } from './domains/checkouts';
+import { CreateCheckoutResponse, GetCheckoutResponse, GetCheckoutsResponse } from './domains/checkouts';
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import {
   GetDiscountRedemptionResponse,
@@ -155,7 +155,7 @@ export type TMethods = {
   /**
    * @returns a paginated list of checkouts.
    */
-  getCheckouts(): Promise<string>;
+  getCheckouts(): Promise<GetCheckoutsResponse>;
 };
 
 export type TLmnsqzyFunctions = {
