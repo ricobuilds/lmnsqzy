@@ -1,5 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import { GetDiscountRedemptionResponse } from './domains/discount-redemptions';
+import { GetDiscountRedemptionResponse, GetDiscountRedemptionsResponse } from './domains/discount-redemptions';
 import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
@@ -108,7 +108,7 @@ export type TMethods = {
   /**
    * @returns a paginated list of discount redemptions.
    */
-  getDiscountRedemptions(): Promise<string>;
+  getDiscountRedemptions(): Promise<GetDiscountRedemptionsResponse>;
   // License Keys
   getLicenseKey(): Promise<string>;
 

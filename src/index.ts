@@ -13,7 +13,7 @@ import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-ite
 import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
 import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
 import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
-import { GetDiscountRedemptionResponse } from './domains/discount-redemptions';
+import { GetDiscountRedemptionResponse, GetDiscountRedemptionsResponse } from './domains/discount-redemptions';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -607,8 +607,26 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountRedemptionResponse>
   }
-  async function getDiscountRedemptions(): Promise<string> {
-    return ``;
+  async function getDiscountRedemptions(): Promise<GetDiscountRedemptionsResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetDiscountRedemptionsResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetDiscountRedemptionsResponse>
   }
   async function getLicenseKey(): Promise<string> {
     return ``;
