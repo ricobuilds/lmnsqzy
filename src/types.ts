@@ -225,7 +225,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `discount` object.
    */
-  deleteDiscount(id: string): Promise<DeleteDiscountResponse>;
+  deleteDiscount<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your discounts.
