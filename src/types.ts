@@ -1,48 +1,5 @@
-import {
-  CheckoutOptions,
-  CreateCheckoutResponse,
-  GetCheckoutResponse,
-  GetCheckoutsResponse,
-} from './domains/checkouts';
-import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import {
-  GetDiscountRedemptionResponse,
-  GetDiscountRedemptionsResponse,
-} from './domains/discount-redemptions';
-import {
-  CreateDiscountResponse,
-  DeleteDiscountResponse,
-  DiscountOptions,
-  GetDiscountResponse,
-  GetDiscountsResponse,
-} from './domains/discounts';
-import { GetFileResponse, GetFilesResponse } from './domains/files';
-import {
-  GetLicenseKeyInstanceResponse,
-  GetLicenseKeyInstancesResponse,
-} from './domains/license-key-instances';
-import {
-  GetLicenseKeyResponse,
-  GetLicenseKeysResponse,
-} from './domains/license-keys';
-import {
-  GetOrderItemResponse,
-  GetOrderItemsResponse,
-} from './domains/order-items';
-import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
-import { GetProductRespense, GetProductsResponse } from './domains/products';
-import { GetStoreResponse, GetStoresResponse } from './domains/stores';
-import {
-  GetSubscriptionInvoiceResponse,
-  GetSubscriptionInvoicesResponse,
-} from './domains/subscription-invoices';
-import {
-  CancelSubscriptionResponse,
-  GetSubscriptionResponse,
-  GetSubscriptionsResponse,
-  UpdateSubscriptionResponse,
-} from './domains/subscriptions';
-import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
+import { CheckoutOptions } from './domains/checkouts';
+import { DiscountOptions } from './domains/discounts';
 
 export type TMethods = {
   /**

@@ -1,52 +1,7 @@
 import { TMethods, TLmnsqzyFunctions } from './types';
-import { constants, errorsTable } from './constants';
+import { constants } from './constants';
 import fetch from 'node-fetch';
-import { GetUserResponse } from './domains/users';
-import { GetStoreResponse, GetStoresResponse } from './domains/stores';
-import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import { LmnsqzyError } from './general/general.responses';
-import { GetProductRespense, GetProductsResponse } from './domains/products';
-import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
-import { GetFileResponse, GetFilesResponse } from './domains/files';
-import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
-import {
-  GetOrderItemResponse,
-  GetOrderItemsResponse,
-} from './domains/order-items';
-import {
-  CancelSubscriptionResponse,
-  GetSubscriptionResponse,
-  GetSubscriptionsResponse,
-  UpdateSubscriptionResponse,
-} from './domains/subscriptions';
-import {
-  GetSubscriptionInvoiceResponse,
-  GetSubscriptionInvoicesResponse,
-} from './domains/subscription-invoices';
-import {
-  CreateDiscountResponse,
-  DeleteDiscountResponse,
-  DiscountOptions,
-  GetDiscountResponse,
-  GetDiscountsResponse,
-} from './domains/discounts';
-import {
-  GetDiscountRedemptionResponse,
-  GetDiscountRedemptionsResponse,
-} from './domains/discount-redemptions';
-import {
-  GetLicenseKeyResponse,
-  GetLicenseKeysResponse,
-} from './domains/license-keys';
-import {
-  GetLicenseKeyInstanceResponse,
-  GetLicenseKeyInstancesResponse,
-} from './domains/license-key-instances';
-import {
-  CreateCheckoutResponse,
-  GetCheckoutResponse,
-  GetCheckoutsResponse,
-} from './domains/checkouts';
+import { DiscountOptions } from './domains/discounts';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -64,23 +19,23 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/users
    * @returns a user object.
    */
-  async function  getUser<T>(): Promise<T> {
+  async function getUser<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
-      headers: {    
+      headers: {
         ...constants.LMNSQZY_HEADERS,
         Authorization: `Bearer ${token}s`,
       },
     });
 
     if (!r.ok) {
-      const err = (await r.json()) as T
+      const err = (await r.json()) as T;
       return err;
     }
 
-    const data = (await r.json()) as T
+    const data = (await r.json()) as T;
 
-    console.log(data)
+    console.log(data);
 
     return data;
   }
@@ -91,7 +46,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a store object.
    */
-  async function getStore(id: string): Promise<GetStoreResponse> {
+  async function getStore<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores/${id}`, {
       method: 'GET',
       headers: {
@@ -101,16 +56,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetStoreResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetStoreResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -118,7 +72,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a set of `store` objects, ordered by name.
    */
-  async function getStores(): Promise<GetStoresResponse> {
+  async function getStores<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores`, {
       method: 'GET',
       headers: {
@@ -126,7 +80,17 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         Authorization: `Bearer ${token}`,
       },
     });
-    return r.json() as Promise<GetStoresResponse>;
+
+    if (!r.ok) {
+      const err = (await r.json()) as T;
+      return err;
+    }
+
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -135,7 +99,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a `customer` object.
    */
-  async function getCustomer(id: string): Promise<GetCustomerResponse> {
+  async function getCustomer<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/customers/${id}`, {
       method: 'GET',
       headers: {
@@ -145,16 +109,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetCustomerResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetCustomerResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -162,7 +125,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `customer` objects, ordered by created_at field in descending order.
    */
-  async function getCustomers(): Promise<GetCustomersResponse> {
+  async function getCustomers<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/customers`, {
       method: 'GET',
       headers: {
@@ -170,7 +133,17 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         Authorization: `Bearer ${token}`,
       },
     });
-    return r.json() as Promise<GetCustomersResponse>;
+
+    if (!r.ok) {
+      const err = (await r.json()) as T;
+      return err;
+    }
+
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -179,7 +152,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a product objects.
    */
-  async function getProduct(id: string): Promise<GetProductRespense> {
+  async function getProduct<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/products${id}`, {
       method: 'GET',
       headers: {
@@ -189,16 +162,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetProductRespense>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -206,7 +178,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a set of `products` objects, ordered by created_at field in descending order.
    */
-  async function getProducts(): Promise<GetProductsResponse> {
+  async function getProducts<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/products`, {
       method: 'GET',
       headers: {
@@ -216,16 +188,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetProductsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -234,7 +205,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a product objects.
    */
-  async function getVariant(id: string): Promise<GetVariantResponse> {
+  async function getVariant<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/variants/${id}`, {
       method: 'GET',
       headers: {
@@ -244,16 +215,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetVariantResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetVariantResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -261,7 +231,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `variant` objects, ordered by created_at field in descending order.
    */
-  async function getVariants(): Promise<GetVariantsResponse> {
+  async function getVariants<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/variants`, {
       method: 'GET',
       headers: {
@@ -271,16 +241,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetVariantsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetVariantsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -289,7 +258,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a product object.
    */
-  async function getFile(id: string): Promise<GetFileResponse> {
+  async function getFile<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/files/${id}`, {
       method: 'GET',
       headers: {
@@ -299,16 +268,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetFileResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetFileResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -316,7 +284,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `file` objects, ordered by created_at field in descending order.
    */
-  async function getFiles(): Promise<GetFilesResponse> {
+  async function getFiles<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/files`, {
       method: 'GET',
       headers: {
@@ -326,16 +294,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetFilesResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetFilesResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -344,7 +311,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order` object.
    */
-  async function getOrder(id: string): Promise<GetOrderResponse> {
+  async function getOrder<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders/${id}`, {
       method: 'GET',
       headers: {
@@ -354,16 +321,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetOrderResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetOrderResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -371,7 +337,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `order` objects, ordered by created_at field in descending order.
    */
-  async function getOrders(): Promise<GetOrdersResponse> {
+  async function getOrders<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders`, {
       method: 'GET',
       headers: {
@@ -381,16 +347,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetOrdersResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetOrdersResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -399,7 +364,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  async function getOrderItem(id: string): Promise<GetOrderItemResponse> {
+  async function getOrderItem<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items/${id}`, {
       method: 'GET',
       headers: {
@@ -409,16 +374,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetOrderItemResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetOrderItemResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -426,7 +390,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `order item` objects, ordered by created_at field in descending order.
    */
-  async function getOrderItems(): Promise<GetOrderItemsResponse> {
+  async function getOrderItems<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items`, {
       method: 'GET',
       headers: {
@@ -436,16 +400,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetOrderItemsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -454,9 +417,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  async function updateSubscription(
-    id: string
-  ): Promise<UpdateSubscriptionResponse> {
+  async function updateSubscription<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
       {
@@ -469,16 +430,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: UpdateSubscriptionResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<UpdateSubscriptionResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -487,7 +447,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `subscription` object.
    */
-  async function getSubscription(id: string): Promise<GetSubscriptionResponse> {
+  async function getSubscription<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
       {
@@ -500,16 +460,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetSubscriptionResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetSubscriptionResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -517,7 +476,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `subscription` objects, ordered by created_at field in descending order.
    */
-  async function getSubscriptions(): Promise<GetSubscriptionsResponse> {
+  async function getSubscriptions<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions`, {
       method: 'GET',
       headers: {
@@ -527,16 +486,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetSubscriptionsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetSubscriptionsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -545,9 +503,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  async function cancelSubscription(
-    id: string
-  ): Promise<CancelSubscriptionResponse> {
+  async function cancelSubscription<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
       {
@@ -560,16 +516,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: CancelSubscriptionResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<CancelSubscriptionResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -578,9 +533,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `subscription invoice` object.
    */
-  async function getSubscriptionInvoice(
-    id: string
-  ): Promise<GetSubscriptionInvoiceResponse> {
+  async function getSubscriptionInvoice<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices/${id}`,
       {
@@ -593,16 +546,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetSubscriptionInvoiceResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetSubscriptionInvoiceResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -610,9 +562,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `subscription invoices` objects, ordered by created_at field in descending order.
    */
-  async function getSubscriptionInvoices(): Promise<
-    GetSubscriptionInvoicesResponse
-  > {
+  async function getSubscriptionInvoices<T>(): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices`,
       {
@@ -625,16 +575,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetSubscriptionInvoicesResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetSubscriptionInvoicesResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -643,9 +592,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  async function createDiscount(
-    options: DiscountOptions
-  ): Promise<CreateDiscountResponse> {
+  async function createDiscount<T>(options: DiscountOptions): Promise<T> {
     let b = {
       data: {
         type: 'discounts',
@@ -675,16 +622,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: CreateDiscountResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<CreateDiscountResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -693,7 +639,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `discount` object.
    */
-  async function getDiscount(id: string): Promise<GetDiscountResponse> {
+  async function getDiscount<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'GET',
       headers: {
@@ -703,16 +649,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetDiscountResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetDiscountResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -721,7 +666,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  async function deleteDiscount(id: string): Promise<DeleteDiscountResponse> {
+  async function deleteDiscount<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'DELETE',
       headers: {
@@ -731,16 +676,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetDiscountResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetDiscountResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -748,7 +692,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `discounts` objects, ordered by created_at field in descending order.
    */
-  async function getDiscounts(): Promise<GetDiscountsResponse> {
+  async function getDiscounts<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'GET',
       headers: {
@@ -758,16 +702,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetDiscountsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetDiscountsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -776,9 +719,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `discount redemption` object.
    */
-  async function getDiscountRedemption(
-    id: string
-  ): Promise<GetDiscountRedemptionResponse> {
+  async function getDiscountRedemption<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions/${id}`,
       {
@@ -791,16 +732,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetDiscountRedemptionResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetDiscountRedemptionResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -808,9 +748,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
    */
-  async function getDiscountRedemptions(): Promise<
-    GetDiscountRedemptionsResponse
-  > {
+  async function getDiscountRedemptions<T>(): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions`,
       {
@@ -823,16 +761,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetDiscountRedemptionsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetDiscountRedemptionsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -841,7 +778,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `discount redemption` object.
    */
-  async function getLicenseKey(id: string): Promise<GetLicenseKeyResponse> {
+  async function getLicenseKey<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys/${id}`, {
       method: 'GET',
       headers: {
@@ -851,16 +788,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetLicenseKeyResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetLicenseKeyResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -868,7 +804,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
    */
-  async function getLicenseKeys(): Promise<GetLicenseKeysResponse> {
+  async function getLicenseKeys<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys`, {
       method: 'GET',
       headers: {
@@ -878,16 +814,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetLicenseKeyResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetLicenseKeyResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -896,9 +831,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `license key instance` object.
    */
-  async function getLicenseKeyInstance(
-    id: string
-  ): Promise<GetLicenseKeyInstanceResponse> {
+  async function getLicenseKeyInstance<T>(id: string): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances/${id}`,
       {
@@ -911,16 +844,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetLicenseKeyInstanceResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetLicenseKeyInstanceResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -928,9 +860,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `license key instances` objects, ordered by created_at field in descending order.
    */
-  async function getLicenseKeyInstances(): Promise<
-    GetLicenseKeyInstancesResponse
-  > {
+  async function getLicenseKeyInstances<T>(): Promise<T> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances`,
       {
@@ -943,16 +873,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     );
 
     if (!r.ok) {
-      const errors: GetLicenseKeyInstancesResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetLicenseKeyInstancesResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -961,8 +890,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  async function createCheckout(
-  ): Promise<CreateCheckoutResponse> {
+  async function createCheckout<T>(): Promise<T> {
     let b = {};
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts`, {
       method: 'POST',
@@ -974,16 +902,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: CreateCheckoutResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<CreateCheckoutResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -992,7 +919,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  async function getCheckout(id: string): Promise<GetCheckoutResponse> {
+  async function getCheckout<T>(id: string): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts/${id}`, {
       method: 'GET',
       headers: {
@@ -1002,16 +929,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetCheckoutResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetCheckoutResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   /**
@@ -1019,7 +945,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `checkouts` objects, ordered by created_at field in descending order.
    */
-  async function getCheckouts(): Promise<GetCheckoutsResponse> {
+  async function getCheckouts<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts`, {
       method: 'GET',
       headers: {
@@ -1029,16 +955,15 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetCheckoutsResponse = {
-        jsonapi: {
-          version: '1.0',
-        },
-        errors: errorsTable[r.status],
-      };
-      return errors;
+      const err = (await r.json()) as T;
+      return err;
     }
 
-    return r.json() as Promise<GetCheckoutsResponse>;
+    const data = (await r.json()) as T;
+
+    console.log(data);
+
+    return data;
   }
 
   const lmnsqzy = (): TMethods => ({

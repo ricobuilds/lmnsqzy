@@ -1,11 +1,9 @@
-export interface LmnsqzyResponse<
-  R
-> {
+export interface LmnsqzyResponse<R> {
   jsonapi: {
     version: string;
   };
   links: {
-    self: string
+    self: string;
   };
   data?: R | R[];
   meta?: {
