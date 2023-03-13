@@ -1,5 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import { GetFileResponse } from './domains/files';
+import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
@@ -57,7 +57,7 @@ export type TMethods = {
   /**
    * @returns a paginated list of files.
    */
-  getFiles(): Promise<string>;
+  getFiles(): Promise<GetFilesResponse>;
   // Orders
   getOrder(): Promise<string>;
 
