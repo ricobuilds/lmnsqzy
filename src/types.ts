@@ -1,14 +1,36 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import { GetDiscountRedemptionResponse, GetDiscountRedemptionsResponse } from './domains/discount-redemptions';
-import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
+import {
+  GetDiscountRedemptionResponse,
+  GetDiscountRedemptionsResponse,
+} from './domains/discount-redemptions';
+import {
+  CreateDiscountResponse,
+  DeleteDiscountResponse,
+  GetDiscountResponse,
+  GetDiscountsResponse,
+} from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
-import { GetLicenseKeyResponse, GetLicenseKeysResponse } from './domains/license-keys';
-import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
+import {
+  GetLicenseKeyResponse,
+  GetLicenseKeysResponse,
+} from './domains/license-keys';
+import {
+  GetOrderItemResponse,
+  GetOrderItemsResponse,
+} from './domains/order-items';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
-import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
-import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
+import {
+  GetSubscriptionInvoiceResponse,
+  GetSubscriptionInvoicesResponse,
+} from './domains/subscription-invoices';
+import {
+  CancelSubscriptionResponse,
+  GetSubscriptionResponse,
+  GetSubscriptionsResponse,
+  UpdateSubscriptionResponse,
+} from './domains/subscriptions';
 import { GetUserResponse } from './domains/users';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
@@ -30,19 +52,19 @@ export type TMethods = {
   getStores(): Promise<GetStoresResponse>;
 
   /**
-   * 
-   * @param {string} z 
+   *
+   * @param {string} z
    * @returns an object with the details of a customer based on the ID
    */
-  getCustomer(z: string) : Promise<GetCustomerResponse>;
+  getCustomer(z: string): Promise<GetCustomerResponse>;
 
   /**
    * @returns a paginated list of customers.
    */
   getCustomers(): Promise<GetCustomersResponse>;
   /**
-   * 
-   * @param {string} z 
+   *
+   * @param {string} z
    * @returns an object with the details of a product based on the ID
    */
   getProduct(z: string): Promise<GetProductRespense>;

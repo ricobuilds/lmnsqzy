@@ -25,11 +25,11 @@ export interface LmnsqzyError {
   jsonapi: {
     version: string;
   };
-  errors: ApiError
+  errors: ApiError;
 }
 
 interface ApiError {
   detail: string;
   status: string;
   title: string;
-};
+}

@@ -9,12 +9,34 @@ import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
-import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
-import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
-import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
-import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
-import { GetDiscountRedemptionResponse, GetDiscountRedemptionsResponse } from './domains/discount-redemptions';
-import { GetLicenseKeyResponse, GetLicenseKeysResponse } from './domains/license-keys';
+import {
+  GetOrderItemResponse,
+  GetOrderItemsResponse,
+} from './domains/order-items';
+import {
+  CancelSubscriptionResponse,
+  GetSubscriptionResponse,
+  GetSubscriptionsResponse,
+  UpdateSubscriptionResponse,
+} from './domains/subscriptions';
+import {
+  GetSubscriptionInvoiceResponse,
+  GetSubscriptionInvoicesResponse,
+} from './domains/subscription-invoices';
+import {
+  CreateDiscountResponse,
+  DeleteDiscountResponse,
+  GetDiscountResponse,
+  GetDiscountsResponse,
+} from './domains/discounts';
+import {
+  GetDiscountRedemptionResponse,
+  GetDiscountRedemptionsResponse,
+} from './domains/discount-redemptions';
+import {
+  GetLicenseKeyResponse,
+  GetLicenseKeysResponse,
+} from './domains/license-keys';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -42,19 +64,19 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const err = await r.json() as LmnsqzyError
-      return err
+      const err = (await r.json()) as LmnsqzyError;
+      return err;
     }
 
     return r.json() as Promise<GetUserResponse>;
   }
 
   /**
-  * This handler gets a store by the ID.
-  * @param {string} id the identifier of a store.
-  * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
-  * @returns a store object.
-  */
+   * This handler gets a store by the ID.
+   * @param {string} id the identifier of a store.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
+   * @returns a store object.
+   */
   async function getStore(id: string): Promise<GetStoreResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/stores/${id}`, {
       method: 'GET',
@@ -67,11 +89,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetStoresResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetStoreResponse>;
@@ -111,14 +133,14 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetStoresResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetCustomerResponse>
+    return r.json() as Promise<GetCustomerResponse>;
   }
 
   /**
@@ -155,11 +177,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetProductRespense>;
@@ -182,11 +204,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetProductsResponse>;
@@ -210,11 +232,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetVariantResponse>;
@@ -237,11 +259,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetVariantsResponse>;
@@ -259,11 +281,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetFileResponse>;
@@ -280,11 +302,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetFilesResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetFilesResponse>;
@@ -301,11 +323,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetOrderResponse>;
@@ -322,11 +344,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrdersResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetOrdersResponse>;
@@ -343,11 +365,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetOrderItemResponse>;
@@ -365,311 +387,344 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
     return r.json() as Promise<GetOrderItemsResponse>;
   }
 
-  async function updateSubscription(id: string): Promise<UpdateSubscriptionResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
-      method: 'PATCH',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function updateSubscription(
+    id: string
+  ): Promise<UpdateSubscriptionResponse> {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: UpdateSubscriptionResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<UpdateSubscriptionResponse>
+    return r.json() as Promise<UpdateSubscriptionResponse>;
   }
   async function getSubscription(id: string): Promise<GetSubscriptionResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: GetSubscriptionResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetSubscriptionResponse>
+    return r.json() as Promise<GetSubscriptionResponse>;
   }
   async function getSubscriptions(): Promise<GetSubscriptionsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetSubscriptionsResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetSubscriptionsResponse>
+    return r.json() as Promise<GetSubscriptionsResponse>;
   }
 
-  async function cancelSubscription(id: string): Promise<CancelSubscriptionResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
-      method: 'DELETE',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function cancelSubscription(
+    id: string
+  ): Promise<CancelSubscriptionResponse> {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: CancelSubscriptionResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<CancelSubscriptionResponse>
+    return r.json() as Promise<CancelSubscriptionResponse>;
   }
-  async function getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices/${id}`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function getSubscriptionInvoice(
+    id: string
+  ): Promise<GetSubscriptionInvoiceResponse> {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: GetSubscriptionInvoiceResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetSubscriptionInvoiceResponse>
+    return r.json() as Promise<GetSubscriptionInvoiceResponse>;
   }
-  async function getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function getSubscriptionInvoices(): Promise<
+    GetSubscriptionInvoicesResponse
+  > {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: GetSubscriptionInvoicesResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetSubscriptionInvoicesResponse>
+    return r.json() as Promise<GetSubscriptionInvoicesResponse>;
   }
   async function createDiscount(): Promise<CreateDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'POST',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: CreateDiscountResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<CreateDiscountResponse>
+    return r.json() as Promise<CreateDiscountResponse>;
   }
   async function getDiscount(id: string): Promise<GetDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetDiscountResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetDiscountResponse>
+    return r.json() as Promise<GetDiscountResponse>;
   }
   async function deleteDiscount(id: string): Promise<DeleteDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'DELETE',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetDiscountResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetDiscountResponse>
+    return r.json() as Promise<GetDiscountResponse>;
   }
   async function getDiscounts(): Promise<GetDiscountsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetDiscountsResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetDiscountsResponse>
+    return r.json() as Promise<GetDiscountsResponse>;
   }
 
-  async function getDiscountRedemption(id: string): Promise<GetDiscountRedemptionResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions/${id}`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function getDiscountRedemption(
+    id: string
+  ): Promise<GetDiscountRedemptionResponse> {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: GetDiscountRedemptionResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetDiscountRedemptionResponse>
+    return r.json() as Promise<GetDiscountRedemptionResponse>;
   }
-  async function getDiscountRedemptions(): Promise<GetDiscountRedemptionsResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
+  async function getDiscountRedemptions(): Promise<
+    GetDiscountRedemptionsResponse
+  > {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/discount-redemptions`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
+    );
 
     if (!r.ok) {
       const errors: GetDiscountRedemptionsResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetDiscountRedemptionsResponse>
+    return r.json() as Promise<GetDiscountRedemptionsResponse>;
   }
   async function getLicenseKey(id: string): Promise<GetLicenseKeyResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys/${id}`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetLicenseKeyResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetLicenseKeyResponse>
+    return r.json() as Promise<GetLicenseKeyResponse>;
   }
   async function getLicenseKeys(): Promise<GetLicenseKeysResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
-        'Authorization': `Bearer ${token}`
-      }
-    })
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!r.ok) {
       const errors: GetLicenseKeyResponse = {
         jsonapi: {
-          version: '1.0'
+          version: '1.0',
         },
-        errors: errorsTable[r.status]
-      }
-      return errors
+        errors: errorsTable[r.status],
+      };
+      return errors;
     }
 
-    return r.json() as Promise<GetLicenseKeyResponse>
+    return r.json() as Promise<GetLicenseKeyResponse>;
   }
   async function getLicenseKeyInstance(): Promise<string> {
     return ``;
