@@ -4,8 +4,8 @@ import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-ite
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
-import { GetSubscriptionInvoice, GetSubscriptionInvoices } from './domains/subscription-invoices';
-import { CancelSubscription, GetSubscription, GetSubscriptions, UpdateSubscription } from './domains/subscriptions';
+import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
+import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
 import { GetUserResponse } from './domains/users';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
@@ -77,20 +77,20 @@ export type TMethods = {
    */
   getOrderItems(): Promise<GetOrderItemsResponse>;
 
-  updateSubscription(id: string): Promise<UpdateSubscription>;
-  getSubscription(id: string): Promise<GetSubscription>;
+  updateSubscription(id: string): Promise<UpdateSubscriptionResponse>;
+  getSubscription(id: string): Promise<GetSubscriptionResponse>;
 
   /**
    * @returns a paginated list of subscriptions.
    */
-  getSubscriptions(): Promise<GetSubscriptions>;
-  cancelSubscription(id: string): Promise<CancelSubscription>;
+  getSubscriptions(): Promise<GetSubscriptionsResponse>;
+  cancelSubscription(id: string): Promise<CancelSubscriptionResponse>;
 
-  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoice>;
+  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse>;
   /**
    * @returns a paginated list of order items.
    */
-  getSubscriptionInvoices(): Promise<GetSubscriptionInvoices>;
+  getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse>;
   // Discounts
   createDiscount(): Promise<string>;
   getDiscount(): Promise<string>;

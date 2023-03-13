@@ -10,8 +10,8 @@ import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
-import { CancelSubscription, GetSubscription, GetSubscriptions, UpdateSubscription } from './domains/subscriptions';
-import { GetSubscriptionInvoice, GetSubscriptionInvoices } from './domains/subscription-invoices';
+import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
+import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -372,7 +372,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetOrderItemsResponse>;
   }
 
-  async function updateSubscription(id: string): Promise<UpdateSubscription> {
+  async function updateSubscription(id: string): Promise<UpdateSubscriptionResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
       method: 'PATCH',
       headers: {
@@ -382,7 +382,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: UpdateSubscriptionResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -391,9 +391,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<UpdateSubscription>
+    return r.json() as Promise<UpdateSubscriptionResponse>
   }
-  async function getSubscription(id: string): Promise<GetSubscription> {
+  async function getSubscription(id: string): Promise<GetSubscriptionResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
       method: 'GET',
       headers: {
@@ -403,7 +403,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: GetSubscriptionResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -412,9 +412,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<GetSubscription>
+    return r.json() as Promise<GetSubscriptionResponse>
   }
-  async function getSubscriptions(): Promise<GetSubscriptions> {
+  async function getSubscriptions(): Promise<GetSubscriptionsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions`, {
       method: 'GET',
       headers: {
@@ -424,7 +424,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: GetSubscriptionsResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -433,10 +433,10 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<GetSubscriptions>
+    return r.json() as Promise<GetSubscriptionsResponse>
   }
 
-  async function cancelSubscription(id: string): Promise<CancelSubscription> {
+  async function cancelSubscription(id: string): Promise<CancelSubscriptionResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`, {
       method: 'DELETE',
       headers: {
@@ -446,7 +446,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: CancelSubscriptionResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -455,9 +455,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<CancelSubscription>
+    return r.json() as Promise<CancelSubscriptionResponse>
   }
-  async function getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoice> {
+  async function getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices/${id}`, {
       method: 'GET',
       headers: {
@@ -467,7 +467,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: GetSubscriptionInvoiceResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -476,9 +476,9 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<GetSubscriptionInvoice>
+    return r.json() as Promise<GetSubscriptionInvoiceResponse>
   }
-  async function getSubscriptionInvoices(): Promise<GetSubscriptionInvoices> {
+  async function getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices`, {
       method: 'GET',
       headers: {
@@ -488,7 +488,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     })
 
     if (!r.ok) {
-      const errors: GetOrderItemsResponse = {
+      const errors: GetSubscriptionInvoicesResponse = {
         jsonapi: {
           version: '1.0'
         },
@@ -497,7 +497,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
       return errors
     }
 
-    return r.json() as Promise<GetSubscriptionInvoices>
+    return r.json() as Promise<GetSubscriptionInvoicesResponse>
   }
   async function getDiscount(): Promise<string> {
     return ``;
