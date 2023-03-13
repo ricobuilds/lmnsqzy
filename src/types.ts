@@ -1,5 +1,6 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
+import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
@@ -59,12 +60,12 @@ export type TMethods = {
    */
   getFiles(): Promise<GetFilesResponse>;
   // Orders
-  getOrder(): Promise<string>;
+  getOrder(id: string): Promise<GetOrderResponse>;
 
   /**
    * @returns a paginated list of order.
    */
-  getOrders(): Promise<string>;
+  getOrders(): Promise<GetOrdersResponse>;
   // Order Items
   getOrderItem(): Promise<string>;
 

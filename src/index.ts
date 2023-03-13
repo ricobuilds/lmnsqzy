@@ -8,6 +8,7 @@ import { LmnsqzyError } from './general/general.responses';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
+import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -282,11 +283,47 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     
     return r.json() as Promise<GetFilesResponse>;
   }
-  async function getOrder(): Promise<string> {
-    return ``;
+  async function getOrder(id: string): Promise<GetOrderResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetOrderResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetOrderResponse>;
   }
-  async function getOrders(): Promise<string> {
-    return ``;
+  async function getOrders(): Promise<GetOrdersResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetOrdersResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetOrdersResponse>;
   }
   async function getOrderItem(): Promise<string> {
     return ``;
