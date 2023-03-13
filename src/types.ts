@@ -133,7 +133,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order` object.
    */
-  getOrder(id: string): Promise<GetOrderResponse>;
+  getOrder<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your orders.
