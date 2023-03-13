@@ -110,7 +110,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `variant` objects, ordered by created_at field in descending order.
    */
-  getVariants(): Promise<GetVariantsResponse>;
+  getVariants<R>(): Promise<R>;
 
   /**
    * This handler gets a file by the ID.
