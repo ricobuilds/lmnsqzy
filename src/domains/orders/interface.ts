@@ -1,6 +1,8 @@
+import { domains } from "~/general";
+
 export interface Order {
-  type: 'orders';
-  id: '1';
+  type: domains;
+  id: string
   attributes: {
     store_id: number;
     identifier: string;
@@ -8,7 +10,7 @@ export interface Order {
     user_name: string;
     user_email: string;
     currency: string;
-    currency_rate: '1.0000';
+    currency_rate: string;
     subtotal: number;
     discount_total: number;
     tax: number;
@@ -22,18 +24,18 @@ export interface Order {
     status: string;
     status_formatted: string;
     refunded: number;
-    refunded_at: null;
+    refunded_at: string | null;
     subtotal_formatted: string;
     discount_total_formatted: string;
     tax_formatted: string;
     total_formatted: string;
     first_order_item: {
       id: number;
-      order_id: 1;
-      product_id: 1;
-      variant_id: 1;
-      product_name: 'Test Limited Licencse for 2 years';
-      variant_name: 'Default';
+      order_id: number;
+      product_id: number;
+      variant_id: number;
+      product_name: string;
+      variant_name: string;
       price: number;
       created_at: string;
       updated_at: string;
@@ -43,32 +45,19 @@ export interface Order {
     updated_at: string;
   };
   relationships: {
-    store: {
-      links: {
-        related: string;
-        self: string;
-      };
-    };
-    'order-items': {
-      links: {
-        related: string;
-        self: string;
-      };
-    };
-    subscriptions: {
-      links: {
-        related: string;
-        self: string;
-      };
-    };
-    'license-keys': {
-      links: {
-        related: string;
-        self: string;
-      };
-    };
+    store: Links;
+    'order-items': Links;
+    subscriptions: Links;
+    'license-keys': Links;
   };
   links: {
+    self: string;
+  };
+}
+
+interface Links {
+  links: {
+    related: string;
     self: string;
   };
 }
