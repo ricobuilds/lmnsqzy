@@ -20,5 +20,20 @@ export interface Discount {
         "status_formatted": string,
         "created_at": string,
         "updated_at": string
+    },
+    relationships: Relationships
+    links: {
+        self: string
     }
+}
+
+interface Relationships<Links = {
+    links: {
+        related: string
+        self: string
+    }
+}> {
+    store: Links
+    variants: Links
+    'discount-redemptions': Links
 }
