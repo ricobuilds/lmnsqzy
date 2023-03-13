@@ -1,13 +1,12 @@
 export interface LmnsqzyResponse<
-  R,
-  L = {
-    self: string;
-  }
+  R
 > {
   jsonapi: {
     version: string;
   };
-  links?: L;
+  links: {
+    self: string
+  };
   data?: R | R[];
   meta?: {
     page: {
@@ -19,7 +18,7 @@ export interface LmnsqzyResponse<
       total: number;
     };
   };
-  errors?: ApiError;
+  errors?: ApiError[];
 }
 
 export interface LmnsqzyError {

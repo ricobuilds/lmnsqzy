@@ -42,7 +42,6 @@ import {
   GetSubscriptionsResponse,
   UpdateSubscriptionResponse,
 } from './domains/subscriptions';
-import { GetUserResponse } from './domains/users';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
 export type TMethods = {
@@ -51,7 +50,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/users
    * @returns a user object.
    */
-  getUser(): Promise<GetUserResponse>;
+  getUser<R>(): Promise<R>;
 
   /**
    * This handler gets a store by the ID.
@@ -59,7 +58,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a store object.
    */
-  getStore(id: string): Promise<GetStoreResponse>;
+  getStore<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your stores.

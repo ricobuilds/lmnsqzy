@@ -64,21 +64,25 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/users
    * @returns a user object.
    */
-  async function getUser(): Promise<GetUserResponse> {
+  async function  getUser<T>(): Promise<T> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/users/me`, {
       method: 'GET',
-      headers: {
+      headers: {    
         ...constants.LMNSQZY_HEADERS,
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${token}s`,
       },
     });
 
     if (!r.ok) {
-      const err = (await r.json()) as LmnsqzyError;
+      const err = (await r.json()) as T
       return err;
     }
 
-    return r.json() as Promise<GetUserResponse>;
+    const data = (await r.json()) as T
+
+    console.log(data)
+
+    return data;
   }
 
   /**
