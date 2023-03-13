@@ -12,7 +12,7 @@ import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
 import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
-import { CreateDiscountResponse, GetDiscountResponse } from './domains/discounts';
+import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -523,7 +523,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
   }
   async function getDiscount(id: string): Promise<GetDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
         'Authorization': `Bearer ${token}`
@@ -542,12 +542,49 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountResponse>
   }
-  async function deleteDiscount(): Promise<string> {
-    return ``;
+  async function deleteDiscount(id: string): Promise<DeleteDiscountResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
+      method: 'DELETE',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetDiscountResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetDiscountResponse>
   }
-  async function getDiscounts(): Promise<string> {
-    return ``;
+  async function getDiscounts(): Promise<GetDiscountsResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetDiscountsResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetDiscountsResponse>
   }
+
   async function getDiscountRedemption(): Promise<string> {
     return ``;
   }
