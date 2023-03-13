@@ -9,6 +9,7 @@ import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
+import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -263,7 +264,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetFileResponse>;
   }
   async function getFiles(): Promise<GetFilesResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/variants`, {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/files`, {
       method: 'GET',
       headers: {
         ...constants.LMNSQZY_HEADERS,
@@ -272,7 +273,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     });
 
     if (!r.ok) {
-      const errors: GetProductRespense = {
+      const errors: GetFilesResponse = {
         jsonapi: {
           version : '1.0'
         },
@@ -325,12 +326,50 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     
     return r.json() as Promise<GetOrdersResponse>;
   }
-  async function getOrderItem(): Promise<string> {
-    return ``;
+  async function getOrderItem(id: string): Promise<GetOrderItemResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetOrderResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetOrderItemResponse>;
   }
-  async function getOrderItems(): Promise<string> {
-    return ``;
+  
+  async function getOrderItems(): Promise<GetOrderItemsResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetOrderItemsResponse = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetOrderItemsResponse>;
   }
+
   async function updateSubscription(): Promise<string> {
     return ``;
   }
