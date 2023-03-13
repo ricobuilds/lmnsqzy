@@ -15,15 +15,15 @@ export interface Store {
     currency: string;
     total_sales: number;
     total_revenue: number;
-    "thirty_day_sales": number,
-    "thirty_day_revenue": number,
-    "created_at": string
-    "updated_at": string
+    thirty_day_sales: number;
+    thirty_day_revenue: number;
+    created_at: string;
+    updated_at: string;
   };
   relationships: Relationships;
   links: {
     self: string;
-  }
+  };
 }
 
 interface Relationships<

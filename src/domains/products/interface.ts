@@ -24,7 +24,7 @@ export interface Product {
   relationships: Relationships;
   links: {
     self: string;
-  }
+  };
 }
 
 interface Relationships<

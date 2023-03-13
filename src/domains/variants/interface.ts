@@ -38,11 +38,13 @@ export interface Variant {
   };
 }
 
-interface Relationships<Links = {
-  links: {
-    related: string
-    self: string
+interface Relationships<
+  Links = {
+    links: {
+      related: string;
+      self: string;
+    };
   }
-}> {
-  product: Links
+> {
+  product: Links;
 }

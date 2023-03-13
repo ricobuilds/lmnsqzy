@@ -1,8 +1,8 @@
-import { domains } from "~/general";
+import { domains } from '~/general';
 
 export interface Order {
   type: domains;
-  id: string
+  id: string;
   attributes: {
     store_id: number;
     identifier: string;
@@ -44,21 +44,22 @@ export interface Order {
     created_at: string;
     updated_at: string;
   };
-  relationships: Relationships
+  relationships: Relationships;
   links: {
     self: string;
   };
 }
 
-interface Relationships<Links = {
-  links: {
-    related: string
-    self: string
+interface Relationships<
+  Links = {
+    links: {
+      related: string;
+      self: string;
+    };
   }
-}> {
+> {
   store: Links;
   'order-items': Links;
   subscriptions: Links;
   'license-keys': Links;
 }
-

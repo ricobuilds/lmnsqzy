@@ -12,20 +12,22 @@ export interface File {
     version: string;
     sort: number;
     status: string;
-    'createdAt': string;
-    'updatedAt': string;
+    createdAt: string;
+    updatedAt: string;
   };
-  relationships: Relationships
+  relationships: Relationships;
   links: {
     self: string;
   };
 }
 
-interface Relationships<Links = {
-  links: {
-    related: string
-    self: string
+interface Relationships<
+  Links = {
+    links: {
+      related: string;
+      self: string;
+    };
   }
-}> {
-  variants: Links
+> {
+  variants: Links;
 }
