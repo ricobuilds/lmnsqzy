@@ -1,7 +1,7 @@
 import { LmnsqzyResponse, LmnsqzyError } from '~general/general.responses';
-import { IGetCustomer } from './interface';
+import { Customer } from './interface';
 
-export type GetCustomerResponse = LmnsqzyResponse<IGetCustomer> | LmnsqzyError;
+export type GetCustomerResponse = LmnsqzyResponse<Customer> | LmnsqzyError;
 export type GetCustomersResponse =
-  | LmnsqzyResponse<IGetCustomer[]>
+  | LmnsqzyResponse<Customer[]>
   | LmnsqzyError;
