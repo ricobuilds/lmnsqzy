@@ -6,6 +6,7 @@ import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { LmnsqzyError } from './general/general.responses';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
+import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -183,8 +184,32 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetProductsResponse>;
   }
 
-  async function getVariant(): Promise<string> {
-    return ``;
+  /**
+   * This handler gets a variant by the ID.
+   * @param {string} id the identifier of a customer's prodfile.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a product objects.
+   */
+  async function getVariant(id: string): Promise<GetVariantResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/variants/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetProductRespense = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetVariantResponse>;
   }
 
   /**
@@ -192,9 +217,28 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `variant` objects, ordered by created_at field in descending order.
    */
-  async function getVariants(): Promise<string> {
-    return ``;
+  async function getVariants(): Promise<GetVariantsResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/variants`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetProductRespense = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetVariantsResponse>;
   }
+  
   async function getFile(): Promise<string> {
     return ``;
   }
