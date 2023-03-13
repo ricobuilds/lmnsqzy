@@ -57,5 +57,19 @@ export interface Checkout {
         "updated_at": string,
         "test_mode": boolean,
         "url": string | null
+    },
+    relationships: Relationships
+    links: {
+        self: string
     }
+}
+
+interface Relationships<Links = {
+    links: {
+        related: string
+        self: string
+    }
+}> {
+    store: Links
+    variant: Links
 }
