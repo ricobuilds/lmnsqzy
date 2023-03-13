@@ -1,4 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
+import { GetProductRespense } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
@@ -30,8 +31,12 @@ export type TMethods = {
    * @returns a paginated list of customers.
    */
   getCustomers(): Promise<GetCustomersResponse>;
-  // Products
-  getProduct(): Promise<string>;
+  /**
+   * 
+   * @param {string} z 
+   * @returns an object with the details of a product based on the ID
+   */
+  getProduct(z: string): Promise<GetProductRespense>;
 
   /**
    * @returns a paginated list of products.
