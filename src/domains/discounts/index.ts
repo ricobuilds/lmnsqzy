@@ -6,7 +6,7 @@ export interface GetDiscountResponse extends LmnsqzyResponse<Discount> {};
 export interface DeleteDiscountResponse extends LmnsqzyResponse<Discount> {};
 export interface GetDiscountsResponse extends LmnsqzyResponse<Discount> {};
 
-export interface DiscountOptions {
+export type DiscountOptions = {
   name: string
   code: string
   amount: number
