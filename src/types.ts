@@ -163,7 +163,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  updateSubscription(id: string): Promise<UpdateSubscriptionResponse>;
+  updateSubscription<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a subscription by the ID.
