@@ -13,5 +13,19 @@ export interface DiscountRedemption {
         "amount": number,
         "created_at": string,
         "updated_at": string
+    },
+    relationships: Relationships
+    links: {
+        self: string
     }
+}
+
+interface Relationships<Links = {
+    links: {
+        related: string
+        self: string
+    }
+}> {
+    discount: Links
+    order: Links
 }
