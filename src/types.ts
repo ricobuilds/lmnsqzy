@@ -1,3 +1,4 @@
+import { CreateCheckoutResponse, GetCheckoutResponse } from './domains/checkouts';
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import {
   GetDiscountRedemptionResponse,
@@ -148,8 +149,8 @@ export type TMethods = {
    */
   getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse>;
   // Checkouts
-  createCheckout(): Promise<string>;
-  getCheckout(): Promise<string>;
+  createCheckout(): Promise<CreateCheckoutResponse>;
+  getCheckout(id: string): Promise<GetCheckoutResponse>;
 
   /**
    * @returns a paginated list of checkouts.
