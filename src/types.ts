@@ -2,7 +2,7 @@ import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { GetDiscountRedemptionResponse, GetDiscountRedemptionsResponse } from './domains/discount-redemptions';
 import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
-import { GetLicenseKeyResponse } from './domains/license-keys';
+import { GetLicenseKeyResponse, GetLicenseKeysResponse } from './domains/license-keys';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
@@ -116,7 +116,7 @@ export type TMethods = {
   /**
    * @returns a paginated list of license keys.
    */
-  getLicenseKeys(): Promise<string>;
+  getLicenseKeys(): Promise<GetLicenseKeysResponse>;
   // License Keys Instances
   getLicenseKeyInstance(): Promise<string>;
 
