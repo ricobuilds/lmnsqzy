@@ -186,7 +186,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `order item` object.
    */
-  cancelSubscription(id: string): Promise<CancelSubscriptionResponse>;
+  cancelSubscription<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a subscription invoice by the ID.
