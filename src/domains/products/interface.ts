@@ -1,10 +1,6 @@
 import { domains } from '~/general';
 
-export interface Product<
-  ILink = {
-    self: string;
-  }
-> {
+export interface Product {
   type: domains;
   id: string;
   attributes: {
@@ -25,11 +21,13 @@ export interface Product<
     created_at: string;
     updated_at: string;
   };
-  relationships: IGetStoreRelationships;
-  links: ILink;
+  relationships: Relationships;
+  links: {
+    self: string;
+  }
 }
 
-interface IGetStoreRelationships<
+interface Relationships<
   ILinks = {
     links: {
       related: string;
