@@ -1,9 +1,5 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { DiscountRedemption } from './interface';
 
-export type GetDiscountRedemptionResponse =
-  | LmnsqzyResponse<DiscountRedemption>
-  | LmnsqzyError;
-export type GetDiscountRedemptionsResponse =
-  | LmnsqzyResponse<DiscountRedemption[]>
-  | LmnsqzyError;
+export interface GetDiscountRedemptionResponse extends LmnsqzyResponse<DiscountRedemption> {};
+export interface GetDiscountRedemptionsResponse extends LmnsqzyResponse<DiscountRedemption[]> {};
