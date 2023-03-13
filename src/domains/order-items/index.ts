@@ -1,5 +1,5 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { OrderItem } from './interface';
 
-export type GetOrderItemResponse = LmnsqzyResponse<OrderItem> | LmnsqzyError;
-export type GetOrderItemsResponse = LmnsqzyResponse<OrderItem[]> | LmnsqzyError;
+export interface GetOrderItemResponse extends LmnsqzyResponse<OrderItem> {};
+export interface GetOrderItemsResponse extends LmnsqzyResponse<OrderItem[]> {};
