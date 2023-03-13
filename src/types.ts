@@ -217,7 +217,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `discount` object.
    */
-  getDiscount(id: string): Promise<GetDiscountResponse>;
+  getDiscount<R>(id: string): Promise<R>;
 
   /**
    * This handler deletes a discount by the ID.
