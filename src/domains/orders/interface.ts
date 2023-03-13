@@ -44,20 +44,21 @@ export interface Order {
     created_at: string;
     updated_at: string;
   };
-  relationships: {
-    store: Links;
-    'order-items': Links;
-    subscriptions: Links;
-    'license-keys': Links;
-  };
+  relationships: Relationships
   links: {
     self: string;
   };
 }
 
-interface Links {
+interface Relationships<Links = {
   links: {
-    related: string;
-    self: string;
-  };
+    related: string
+    self: string
+  }
+}> {
+  store: Links;
+  'order-items': Links;
+  subscriptions: Links;
+  'license-keys': Links;
 }
+
