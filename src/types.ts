@@ -118,7 +118,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a product object.
    */
-  getFile(id: string): Promise<GetFileResponse>;
+  getFile<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your files.
