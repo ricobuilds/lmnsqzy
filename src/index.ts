@@ -12,6 +12,7 @@ import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 import { CancelSubscriptionResponse, GetSubscriptionResponse, GetSubscriptionsResponse, UpdateSubscriptionResponse } from './domains/subscriptions';
 import { GetSubscriptionInvoiceResponse, GetSubscriptionInvoicesResponse } from './domains/subscription-invoices';
+import { GetDiscountResponse } from './domains/discounts';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -499,10 +500,28 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetSubscriptionInvoicesResponse>
   }
-  async function getDiscount(): Promise<string> {
-    return ``;
+  async function createDiscount(): Promise<GetDiscountResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
+      method: 'POST',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetDiscountResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetDiscountResponse>
   }
-  async function createDiscount(): Promise<string> {
+  async function getDiscount(): Promise<string> {
     return ``;
   }
   async function deleteDiscount(): Promise<string> {

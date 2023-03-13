@@ -1,4 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
+import { GetDiscountResponse } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
@@ -92,7 +93,7 @@ export type TMethods = {
    */
   getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse>;
   // Discounts
-  createDiscount(): Promise<string>;
+  createDiscount(): Promise<GetDiscountResponse>;
   getDiscount(): Promise<string>;
   deleteDiscount(): Promise<string>;
 
