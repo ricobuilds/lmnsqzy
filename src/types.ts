@@ -178,7 +178,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `subscription` objects, ordered by created_at field in descending order.
    */
-  getSubscriptions(): Promise<GetSubscriptionsResponse>;
+  getSubscriptions<R>(): Promise<R>;
 
   /**
    * This handler cancels a subscription by the ID.
