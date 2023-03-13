@@ -11,6 +11,7 @@ import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
 import { CancelSubscription, GetSubscription, GetSubscriptions, UpdateSubscription } from './domains/subscriptions';
+import { GetSubscriptionInvoice, GetSubscriptionInvoices } from './domains/subscription-invoices';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -63,7 +64,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetStoresResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -107,7 +108,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetStoresResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -151,13 +152,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetProductRespense>;
   }
 
@@ -178,13 +179,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetProductsResponse>;
   }
 
@@ -206,13 +207,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetVariantResponse>;
   }
 
@@ -233,13 +234,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetVariantsResponse>;
   }
 
@@ -255,13 +256,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetProductRespense = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetFileResponse>;
   }
   async function getFiles(): Promise<GetFilesResponse> {
@@ -276,13 +277,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetFilesResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetFilesResponse>;
   }
   async function getOrder(id: string): Promise<GetOrderResponse> {
@@ -297,13 +298,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetOrderResponse>;
   }
   async function getOrders(): Promise<GetOrdersResponse> {
@@ -318,13 +319,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrdersResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetOrdersResponse>;
   }
   async function getOrderItem(id: string): Promise<GetOrderItemResponse> {
@@ -339,13 +340,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetOrderItemResponse>;
   }
 
@@ -361,13 +362,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
       return errors
     }
-    
+
     return r.json() as Promise<GetOrderItemsResponse>;
   }
 
@@ -383,7 +384,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -404,7 +405,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -425,7 +426,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -447,7 +448,7 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     if (!r.ok) {
       const errors: GetOrderItemsResponse = {
         jsonapi: {
-          version : '1.0'
+          version: '1.0'
         },
         errors: errorsTable[r.status]
       }
@@ -456,11 +457,47 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<CancelSubscription>
   }
-  async function getSubscriptionsInvoice(): Promise<string> {
-    return ``;
+  async function getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoice> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetOrderItemsResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetSubscriptionInvoice>
   }
-  async function getSubscriptionsInvoices(): Promise<string> {
-    return ``;
+  async function getSubscriptionInvoices(): Promise<GetSubscriptionInvoices> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscription-invoices`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        'Authorization': `Bearer ${token}`
+      }
+    })
+
+    if (!r.ok) {
+      const errors: GetOrderItemsResponse = {
+        jsonapi: {
+          version: '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+
+    return r.json() as Promise<GetSubscriptionInvoices>
   }
   async function getDiscount(): Promise<string> {
     return ``;
@@ -524,8 +561,8 @@ export const connect = (token: string): TLmnsqzyFunctions => {
         getSubscription,
         getSubscriptions,
         cancelSubscription,
-        getSubscriptionsInvoice,
-        getSubscriptionsInvoices,
+        getSubscriptionInvoice,
+        getSubscriptionInvoices,
         createDiscount,
         getDiscount,
         deleteDiscount,

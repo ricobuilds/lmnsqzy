@@ -4,6 +4,7 @@ import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-ite
 import { GetOrderResponse, GetOrdersResponse } from './domains/orders';
 import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
+import { GetSubscriptionInvoice, GetSubscriptionInvoices } from './domains/subscription-invoices';
 import { CancelSubscription, GetSubscription, GetSubscriptions, UpdateSubscription } from './domains/subscriptions';
 import { GetUserResponse } from './domains/users';
 import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
@@ -85,11 +86,11 @@ export type TMethods = {
   getSubscriptions(): Promise<GetSubscriptions>;
   cancelSubscription(id: string): Promise<CancelSubscription>;
 
-  getSubscriptionsInvoice(): Promise<string>;
+  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoice>;
   /**
    * @returns a paginated list of order items.
    */
-  getSubscriptionsInvoices(): Promise<string>;
+  getSubscriptionInvoices(): Promise<GetSubscriptionInvoices>;
   // Discounts
   createDiscount(): Promise<string>;
   getDiscount(): Promise<string>;
