@@ -1,7 +1,7 @@
 import { describe, it } from 'vitest';
 import { connect } from '../../../src/';
 
-describe('getStore', () => {
+describe('getProduct', () => {
   it('it works!', async () => {
     const { lmnsqzy } = connect(`${process.env.LMNSQZY_API_TOKEN}`);
     const { getProduct } = lmnsqzy();
