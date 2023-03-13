@@ -959,7 +959,6 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @returns a `checkout` object.
    */
   async function createCheckout(
-    options: CheckoutOptions
   ): Promise<CreateCheckoutResponse> {
     let b = {};
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts`, {
