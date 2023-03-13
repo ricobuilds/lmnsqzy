@@ -24,7 +24,7 @@ export interface Variant {
     license_activation_limit: number;
     is_license_limit_unlimited: boolean;
     license_length_value: license_length_value;
-    license_length_unit: 'years';
+    license_length_unit: string;
     is_license_length_unlimited: boolean;
     sort: number;
     status: status;
