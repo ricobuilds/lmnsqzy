@@ -1,4 +1,4 @@
-import { LmnsqzyResponse, LmnsqzyError } from '~general/general.responses';
+import { LmnsqzyResponse } from '~general/general.responses';
 import { User } from './interface';
 
-export type GetUserResponse = LmnsqzyResponse<User> | LmnsqzyError;
+export interface GetUserResponse extends LmnsqzyResponse<User> {};
