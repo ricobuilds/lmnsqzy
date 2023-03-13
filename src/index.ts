@@ -37,6 +37,7 @@ import {
   GetLicenseKeyResponse,
   GetLicenseKeysResponse,
 } from './domains/license-keys';
+import { GetLicenseKeyInstanceResponse } from './domains/license-key-instances';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -726,8 +727,26 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyResponse>;
   }
-  async function getLicenseKeyInstance(): Promise<string> {
-    return ``;
+  async function getLicenseKeyInstance(id: string): Promise<GetLicenseKeyInstanceResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-key-instances/${id}`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetLicenseKeyInstanceResponse = {
+        jsonapi: {
+          version: '1.0',
+        },
+        errors: errorsTable[r.status],
+      };
+      return errors;
+    }
+
+    return r.json() as Promise<GetLicenseKeyInstanceResponse>;
   }
   async function getLicenseKeyInstances(): Promise<string> {
     return ``;

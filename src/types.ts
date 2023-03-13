@@ -10,6 +10,7 @@ import {
   GetDiscountsResponse,
 } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
+import { GetLicenseKeyInstanceResponse } from './domains/license-key-instances';
 import {
   GetLicenseKeyResponse,
   GetLicenseKeysResponse,
@@ -140,7 +141,7 @@ export type TMethods = {
    */
   getLicenseKeys(): Promise<GetLicenseKeysResponse>;
   // License Keys Instances
-  getLicenseKeyInstance(): Promise<string>;
+  getLicenseKeyInstance(id: string): Promise<GetLicenseKeyInstanceResponse>;
 
   /**
    * @returns a paginated list of license key instances.
