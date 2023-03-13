@@ -1,5 +1,5 @@
-import { LmnsqzyError, LmnsqzyResponse } from '~/general/general.responses';
+import { LmnsqzyResponse } from '~/general/general.responses';
 import { Variant } from './interface';
 
-export type GetVariantResponse = LmnsqzyResponse<Variant> | LmnsqzyError;
-export type GetVariantsResponse = LmnsqzyResponse<Variant[]> | LmnsqzyError;
+export interface GetVariantResponse extends LmnsqzyResponse<Variant> {};
+export interface GetVariantsResponse extends LmnsqzyResponse<Variant[]> {};
