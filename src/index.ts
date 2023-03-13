@@ -37,8 +37,15 @@ import {
   GetLicenseKeyResponse,
   GetLicenseKeysResponse,
 } from './domains/license-keys';
-import { GetLicenseKeyInstanceResponse, GetLicenseKeyInstancesResponse } from './domains/license-key-instances';
-import { CreateCheckoutResponse, GetCheckoutResponse, GetCheckoutsResponse } from './domains/checkouts';
+import {
+  GetLicenseKeyInstanceResponse,
+  GetLicenseKeyInstancesResponse,
+} from './domains/license-key-instances';
+import {
+  CreateCheckoutResponse,
+  GetCheckoutResponse,
+  GetCheckoutsResponse,
+} from './domains/checkouts';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -728,14 +735,19 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyResponse>;
   }
-  async function getLicenseKeyInstance(id: string): Promise<GetLicenseKeyInstanceResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-key-instances/${id}`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  async function getLicenseKeyInstance(
+    id: string
+  ): Promise<GetLicenseKeyInstanceResponse> {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!r.ok) {
       const errors: GetLicenseKeyInstanceResponse = {
@@ -749,14 +761,19 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyInstanceResponse>;
   }
-  async function getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse> {
-    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-key-instances`, {
-      method: 'GET',
-      headers: {
-        ...constants.LMNSQZY_HEADERS,
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  async function getLicenseKeyInstances(): Promise<
+    GetLicenseKeyInstancesResponse
+  > {
+    let r = await fetch(
+      `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances`,
+      {
+        method: 'GET',
+        headers: {
+          ...constants.LMNSQZY_HEADERS,
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!r.ok) {
       const errors: GetLicenseKeyInstancesResponse = {

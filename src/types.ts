@@ -1,4 +1,8 @@
-import { CreateCheckoutResponse, GetCheckoutResponse, GetCheckoutsResponse } from './domains/checkouts';
+import {
+  CreateCheckoutResponse,
+  GetCheckoutResponse,
+  GetCheckoutsResponse,
+} from './domains/checkouts';
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import {
   GetDiscountRedemptionResponse,
@@ -11,7 +15,10 @@ import {
   GetDiscountsResponse,
 } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
-import { GetLicenseKeyInstanceResponse, GetLicenseKeyInstancesResponse } from './domains/license-key-instances';
+import {
+  GetLicenseKeyInstanceResponse,
+  GetLicenseKeyInstancesResponse,
+} from './domains/license-key-instances';
 import {
   GetLicenseKeyResponse,
   GetLicenseKeysResponse,
