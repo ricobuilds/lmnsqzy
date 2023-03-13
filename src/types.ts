@@ -201,7 +201,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `subscription invoices` objects, ordered by created_at field in descending order.
    */
-  getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse>;
+  getSubscriptionInvoices<R>(): Promise<R>;
 
   /**
    * This handler creates a custom checkout.
