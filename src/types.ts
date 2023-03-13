@@ -65,7 +65,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
    * @returns a set of `store` objects, ordered by name.
    */
-  getStores(): Promise<GetStoresResponse>;
+  getStores<R>(): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your stores.
