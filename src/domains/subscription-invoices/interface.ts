@@ -34,18 +34,19 @@ export interface SubscriptionInvoice {
         "updated_at": string,
         "test_mode": boolean
     },
-    "relationships": {
-        "store": Links,
-        "subscription": Links
-    },
-    "links": {
-        "self": string
-    }
-}
-
-interface Links {
+    relationships: Relationships;
     links: {
-        related: string
-        self: string
+      self: string;
+    };
+  }
+  
+  interface Relationships<Links = {
+    links: {
+      related: string
+      self: string
     }
-}
+  }> {
+    store: Links
+    subscription: Links
+  }
+  
