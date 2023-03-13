@@ -247,7 +247,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
    * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
    */
-  getDiscountRedemptions(): Promise<GetDiscountRedemptionsResponse>;
+  getDiscountRedemptions<R>(): Promise<R>;
 
   /**
    * This handler gets a license key by the ID.
