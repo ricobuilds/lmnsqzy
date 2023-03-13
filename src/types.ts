@@ -255,7 +255,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `discount redemption` object.
    */
-  getLicenseKey(id: string): Promise<GetLicenseKeyResponse>;
+  getLicenseKey<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your license keys.
