@@ -1,4 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
+import { GetDiscountRedemptionResponse } from './domains/discount-redemptions';
 import { CreateDiscountResponse, DeleteDiscountResponse, GetDiscountResponse, GetDiscountsResponse } from './domains/discounts';
 import { GetFileResponse, GetFilesResponse } from './domains/files';
 import { GetOrderItemResponse, GetOrderItemsResponse } from './domains/order-items';
@@ -102,7 +103,7 @@ export type TMethods = {
    */
   getDiscounts(): Promise<GetDiscountsResponse>;
   // Discount Redemptions
-  getDiscountRedemption(): Promise<string>;
+  getDiscountRedemption(id: string): Promise<GetDiscountRedemptionResponse>;
 
   /**
    * @returns a paginated list of discount redemptions.
