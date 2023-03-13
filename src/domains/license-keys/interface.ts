@@ -21,4 +21,21 @@ export interface LicenseKey {
         "created_at": string,
         "updated_at": string
     },
+    relationships: Relationships
+    links: {
+        self: string
+    }
+}
+
+interface Relationships<Links = {
+    links: {
+        related: string
+        self: string
+    }
+}> {
+    store: Links
+    order: Links
+    'order-item': Links
+    product: Links
+    'license-key-instances': Links
 }
