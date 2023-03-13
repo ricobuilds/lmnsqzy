@@ -240,7 +240,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns an `discount redemption` object.
    */
-  getDiscountRedemption(id: string): Promise<GetDiscountRedemptionResponse>;
+  getDiscountRedemption<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your discount redemptions.
