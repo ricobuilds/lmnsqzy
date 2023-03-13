@@ -270,7 +270,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `license key instance` object.
    */
-  getLicenseKeyInstance(id: string): Promise<GetLicenseKeyInstanceResponse>;
+  getLicenseKeyInstance<R>(id: string): Promise<R>;
 
   /**
    * This handler gets a paginatated object of all your license key instances.
