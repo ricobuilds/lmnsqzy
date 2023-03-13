@@ -11,7 +11,7 @@ describe('getUser', () => {
   it('works', async () => {
     const { lmnsqzy } = connect(`${process.env.LMNSQZY_API_TOKEN}`);
     const { getUser } = lmnsqzy();
-    const z: GetUserResponse = await getUser()
+    const z: GetUserResponse = await getUser();
     expect(z.data.attributes.name).toBeTruthy();
   });
 });

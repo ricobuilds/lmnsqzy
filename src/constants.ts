@@ -16,7 +16,7 @@ export const errorsTable: {
   204: {
     status: '204',
     title: 'No Content',
-    detail: 'Removal of discount was successful.'
+    detail: 'Removal of discount was successful.',
   },
   400: {
     status: '400',

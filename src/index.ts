@@ -280,6 +280,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetVariantsResponse>;
   }
 
+  /**
+   * This handler gets a file by the ID.
+   * @param {string} id the identifier of a file's profile.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a product object.
+   */
   async function getFile(id: string): Promise<GetFileResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/files/${id}`, {
       method: 'GET',
@@ -301,6 +307,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetFileResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your files.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `file` objects, ordered by created_at field in descending order.
+   */
   async function getFiles(): Promise<GetFilesResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/files`, {
       method: 'GET',
@@ -322,6 +334,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetFilesResponse>;
   }
+
+  /**
+   * This handler gets an order by the ID.
+   * @param {string} id the identifier of an order.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order` object.
+   */
   async function getOrder(id: string): Promise<GetOrderResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders/${id}`, {
       method: 'GET',
@@ -343,6 +362,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetOrderResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your orders.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `order` objects, ordered by created_at field in descending order.
+   */
   async function getOrders(): Promise<GetOrdersResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/orders`, {
       method: 'GET',
@@ -364,6 +389,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetOrdersResponse>;
   }
+
+  /**
+   * This handler gets an order item by the ID.
+   * @param {string} id the identifier of an order item.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   async function getOrderItem(id: string): Promise<GetOrderItemResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items/${id}`, {
       method: 'GET',
@@ -386,6 +418,11 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetOrderItemResponse>;
   }
 
+  /**
+   * This handler gets a paginatated object of all your order items.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `order item` objects, ordered by created_at field in descending order.
+   */
   async function getOrderItems(): Promise<GetOrderItemsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/order-items`, {
       method: 'GET',
@@ -408,6 +445,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetOrderItemsResponse>;
   }
 
+  /**
+   * This handler updates a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   async function updateSubscription(
     id: string
   ): Promise<UpdateSubscriptionResponse> {
@@ -434,6 +477,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<UpdateSubscriptionResponse>;
   }
+
+  /**
+   * This handler gets a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `subscription` object.
+   */
   async function getSubscription(id: string): Promise<GetSubscriptionResponse> {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/subscriptions/${id}`,
@@ -458,6 +508,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetSubscriptionResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your subscriptions.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `subscription` objects, ordered by created_at field in descending order.
+   */
   async function getSubscriptions(): Promise<GetSubscriptionsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/subscriptions`, {
       method: 'GET',
@@ -480,6 +536,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetSubscriptionsResponse>;
   }
 
+  /**
+   * This handler cancels a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   async function cancelSubscription(
     id: string
   ): Promise<CancelSubscriptionResponse> {
@@ -506,6 +568,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<CancelSubscriptionResponse>;
   }
+
+  /**
+   * This handler gets a subscription invoice by the ID.
+   * @param {string} id the identifier of a subscription invoice.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `subscription invoice` object.
+   */
   async function getSubscriptionInvoice(
     id: string
   ): Promise<GetSubscriptionInvoiceResponse> {
@@ -532,6 +601,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetSubscriptionInvoiceResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your subscription invoices.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `subscription invoices` objects, ordered by created_at field in descending order.
+   */
   async function getSubscriptionInvoices(): Promise<
     GetSubscriptionInvoicesResponse
   > {
@@ -558,7 +633,16 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetSubscriptionInvoicesResponse>;
   }
-  async function createDiscount(options: DiscountOptions): Promise<CreateDiscountResponse> {
+
+  /**
+   * This handler creates a custom checkout.
+   * @param {options} DiscountOptions the configurations for the custome checkout page.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
+  async function createDiscount(
+    options: DiscountOptions
+  ): Promise<CreateDiscountResponse> {
     let b = {
       data: {
         type: 'discounts',
@@ -566,25 +650,25 @@ export const connect = (token: string): TLmnsqzyFunctions => {
           name: options.name,
           code: options.code,
           amount: options.amount,
-          'amount_type': options.amount_type
+          amount_type: options.amount_type,
         },
         relationships: {
           store: {
             data: {
               type: 'stores',
-              id: options.store_id
-            }
-          }
-        }
-      }
-    }
+              id: options.store_id,
+            },
+          },
+        },
+      },
+    };
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'POST',
       headers: {
         ...constants.LMNSQZY_HEADERS,
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(b)
+      body: JSON.stringify(b),
     });
 
     if (!r.ok) {
@@ -599,6 +683,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<CreateDiscountResponse>;
   }
+
+  /**
+   * This handler gets a discount by the ID.
+   * @param {string} id the identifier of a discount.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `discount` object.
+   */
   async function getDiscount(id: string): Promise<GetDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'GET',
@@ -620,6 +711,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountResponse>;
   }
+
+  /**
+   * This handler deletes a discount by the ID.
+   * @param {string} id the identifier of a discount.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   async function deleteDiscount(id: string): Promise<DeleteDiscountResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts${id}`, {
       method: 'DELETE',
@@ -641,6 +739,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your discounts.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discounts` objects, ordered by created_at field in descending order.
+   */
   async function getDiscounts(): Promise<GetDiscountsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'GET',
@@ -663,6 +767,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetDiscountsResponse>;
   }
 
+  /**
+   * This handler gets a discount redemption by the ID.
+   * @param {string} id the identifier of a discount redemption.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `discount redemption` object.
+   */
   async function getDiscountRedemption(
     id: string
   ): Promise<GetDiscountRedemptionResponse> {
@@ -689,6 +799,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountRedemptionResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your discount redemptions.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
+   */
   async function getDiscountRedemptions(): Promise<
     GetDiscountRedemptionsResponse
   > {
@@ -715,6 +831,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetDiscountRedemptionsResponse>;
   }
+
+  /**
+   * This handler gets a license key by the ID.
+   * @param {string} id the identifier of a license key.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `discount redemption` object.
+   */
   async function getLicenseKey(id: string): Promise<GetLicenseKeyResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys/${id}`, {
       method: 'GET',
@@ -736,6 +859,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your license keys.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
+   */
   async function getLicenseKeys(): Promise<GetLicenseKeysResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/license-keys`, {
       method: 'GET',
@@ -757,6 +886,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyResponse>;
   }
+
+  /**
+   * This handler gets a license key instance by the ID.
+   * @param {string} id the identifier of a license key instance.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `license key instance` object.
+   */
   async function getLicenseKeyInstance(
     id: string
   ): Promise<GetLicenseKeyInstanceResponse> {
@@ -784,7 +920,14 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetLicenseKeyInstanceResponse>;
   }
 
-  async function getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse> {
+  /**
+   * This handler gets a paginatated object of all your license key instances.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `license key instances` objects, ordered by created_at field in descending order.
+   */
+  async function getLicenseKeyInstances(): Promise<
+    GetLicenseKeyInstancesResponse
+  > {
     let r = await fetch(
       `${constants.LMNSQZY_BASE_URL}/v1/license-key-instances`,
       {
@@ -808,13 +951,24 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetLicenseKeyInstancesResponse>;
   }
-  async function createCheckout(): Promise<CreateCheckoutResponse> {
+
+  /**
+   * This handler creates a custom checkout.
+   * @param {option} CheckoutOptions the configurations for the custome checkout page.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
+  async function createCheckout(
+    options: CheckoutOptions
+  ): Promise<CreateCheckoutResponse> {
+    let b = {};
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts`, {
       method: 'POST',
       headers: {
         ...constants.LMNSQZY_HEADERS,
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(b),
     });
 
     if (!r.ok) {
@@ -829,6 +983,13 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<CreateCheckoutResponse>;
   }
+
+  /**
+   * This handler gets a checkout by the ID.
+   * @param {string} id the identifier of a checkout.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
   async function getCheckout(id: string): Promise<GetCheckoutResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts/${id}`, {
       method: 'GET',
@@ -850,6 +1011,12 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetCheckoutResponse>;
   }
+
+  /**
+   * This handler gets a paginatated object of all your custom checkouts.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `checkouts` objects, ordered by created_at field in descending order.
+   */
   async function getCheckouts(): Promise<GetCheckoutsResponse> {
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/checkouts`, {
       method: 'GET',
@@ -872,46 +1039,45 @@ export const connect = (token: string): TLmnsqzyFunctions => {
     return r.json() as Promise<GetCheckoutsResponse>;
   }
 
-
   const lmnsqzy = (): TMethods => ({
-      getUser,
-        getStore,
-        getStores,
-        getCustomer,
-        getCustomers,
-        getProduct,
-        getProducts,
-        getVariant,
-        getVariants,
-        getFile,
-        getFiles,
-        getOrder,
-        getOrders,
-        getOrderItem,
-        getOrderItems,
-        updateSubscription,
-        getSubscription,
-        getSubscriptions,
-        cancelSubscription,
-        getSubscriptionInvoice,
-        getSubscriptionInvoices,
-        createDiscount,
-        getDiscount,
-        deleteDiscount,
-        getDiscounts,
-        getDiscountRedemption,
-        getDiscountRedemptions,
-        getLicenseKey,
-        getLicenseKeys,
-        getLicenseKeyInstance,
-        getLicenseKeyInstances,
-        createCheckout,
-        getCheckout,
-        getCheckouts,
-    })
-   
+    getUser,
+    getStore,
+    getStores,
+    getCustomer,
+    getCustomers,
+    getProduct,
+    getProducts,
+    getVariant,
+    getVariants,
+    getFile,
+    getFiles,
+    getOrder,
+    getOrders,
+    getOrderItem,
+    getOrderItems,
+    updateSubscription,
+    getSubscription,
+    getSubscriptions,
+    cancelSubscription,
+    getSubscriptionInvoice,
+    getSubscriptionInvoices,
+    createDiscount,
+    getDiscount,
+    deleteDiscount,
+    getDiscounts,
+    getDiscountRedemption,
+    getDiscountRedemptions,
+    getLicenseKey,
+    getLicenseKeys,
+    getLicenseKeyInstance,
+    getLicenseKeyInstances,
+    createCheckout,
+    getCheckout,
+    getCheckouts,
+  });
+
   return {
     doesWork: () => 'it works!',
-    lmnsqzy
-  }
+    lmnsqzy,
+  };
 };

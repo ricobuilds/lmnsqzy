@@ -47,122 +47,259 @@ import { GetVariantResponse, GetVariantsResponse } from './domains/variants';
 
 export type TMethods = {
   /**
-   *
-   * @returns the currently authenticated user.
+   * This handler gets the currently authenticated user.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/users
+   * @returns a user object.
    */
   getUser(): Promise<GetUserResponse>;
 
   /**
-   * @returns a store based on the given ID.
+   * This handler gets a store by the ID.
+   * @param {string} id the identifier of a store.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
+   * @returns a store object.
    */
-  getStore(z: string): Promise<GetStoreResponse>;
+  getStore(id: string): Promise<GetStoreResponse>;
 
   /**
-   * @returns a paginated list of stores.
+   * This handler gets a paginatated object of all your stores.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/stores
+   * @returns a set of `store` objects, ordered by name.
    */
   getStores(): Promise<GetStoresResponse>;
 
   /**
-   *
-   * @param {string} z
-   * @returns an object with the details of a customer based on the ID
+   * This handler gets a paginatated object of all your stores.
+   * @param {string} id the identifier of a customer's profile.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a `customer` object.
    */
-  getCustomer(z: string): Promise<GetCustomerResponse>;
+  getCustomer(id: string): Promise<GetCustomerResponse>;
 
   /**
-   * @returns a paginated list of customers.
+   * This handler gets a paginatated object of all your customers.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `customer` objects, ordered by created_at field in descending order.
    */
   getCustomers(): Promise<GetCustomersResponse>;
-  /**
-   *
-   * @param {string} z
-   * @returns an object with the details of a product based on the ID
-   */
-  getProduct(z: string): Promise<GetProductRespense>;
 
   /**
-   * @returns a paginated list of products.
+   * This handler gets a product by the ID.
+   * @param {string} id the identifier of a product.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a product objects.
+   */
+  getProduct(id: string): Promise<GetProductRespense>;
+
+  /**
+   * This handler gets a paginatated object of all your products.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a set of `products` objects, ordered by created_at field in descending order.
    */
   getProducts(): Promise<GetProductsResponse>;
-  // Variants
+
+  /**
+   * This handler gets a variant by the ID.
+   * @param {string} id the identifier of a product's variant.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a product objects.
+   */
   getVariant(id: string): Promise<GetVariantResponse>;
 
   /**
-   * @returns a paginated list of variants.
+   * This handler gets a paginatated object of all your products.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `variant` objects, ordered by created_at field in descending order.
    */
   getVariants(): Promise<GetVariantsResponse>;
-  // Files
+
+  /**
+   * This handler gets a file by the ID.
+   * @param {string} id the identifier of a file's profile.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a product object.
+   */
   getFile(id: string): Promise<GetFileResponse>;
 
   /**
-   * @returns a paginated list of files.
+   * This handler gets a paginatated object of all your files.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `file` objects, ordered by created_at field in descending order.
    */
   getFiles(): Promise<GetFilesResponse>;
-  // Orders
+
+  /**
+   * This handler gets an order by the ID.
+   * @param {string} id the identifier of an order.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order` object.
+   */
   getOrder(id: string): Promise<GetOrderResponse>;
 
   /**
-   * @returns a paginated list of order.
+   * This handler gets a paginatated object of all your orders.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `order` objects, ordered by created_at field in descending order.
    */
   getOrders(): Promise<GetOrdersResponse>;
-  // Order Items
+
+  /**
+   * This handler gets an order item by the ID.
+   * @param {string} id the identifier of an order item.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   getOrderItem(id: string): Promise<GetOrderItemResponse>;
 
   /**
-   * @returns a paginated list of order items.
+   * This handler gets a paginatated object of all your order items.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `order item` objects, ordered by created_at field in descending order.
    */
   getOrderItems(): Promise<GetOrderItemsResponse>;
 
+  /**
+   * This handler updates a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   updateSubscription(id: string): Promise<UpdateSubscriptionResponse>;
+
+  /**
+   * This handler gets a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `subscription` object.
+   */
   getSubscription(id: string): Promise<GetSubscriptionResponse>;
 
   /**
-   * @returns a paginated list of subscriptions.
+   * This handler gets a paginatated object of all your subscriptions.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `subscription` objects, ordered by created_at field in descending order.
    */
   getSubscriptions(): Promise<GetSubscriptionsResponse>;
+
+  /**
+   * This handler cancels a subscription by the ID.
+   * @param {string} id the identifier of a subscription.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `order item` object.
+   */
   cancelSubscription(id: string): Promise<CancelSubscriptionResponse>;
 
-  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse>;
   /**
-   * @returns a paginated list of order items.
+   * This handler gets a subscription invoice by the ID.
+   * @param {string} id the identifier of a subscription invoice.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `subscription invoice` object.
+   */
+  getSubscriptionInvoice(id: string): Promise<GetSubscriptionInvoiceResponse>;
+
+  /**
+   * This handler gets a paginatated object of all your subscription invoices.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `subscription invoices` objects, ordered by created_at field in descending order.
    */
   getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse>;
-  // Discounts
+
+  /**
+   * This handler creates a custom checkout.
+   * @param {options} CheckoutOptions the configurations for the custome checkout page.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
   createDiscount(options: DiscountOptions): Promise<CreateDiscountResponse>;
+
+  /**
+   * This handler gets a discount by the ID.
+   * @param {string} id the identifier of a discount.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `discount` object.
+   */
   getDiscount(id: string): Promise<GetDiscountResponse>;
+
+  /**
+   * This handler deletes a discount by the ID.
+   * @param {string} id the identifier of a discount.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `discount` object.
+   */
   deleteDiscount(id: string): Promise<DeleteDiscountResponse>;
 
   /**
-   * @returns a paginated list of discounts.
+   * This handler gets a paginatated object of all your discounts.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discounts` objects, ordered by created_at field in descending order.
    */
   getDiscounts(): Promise<GetDiscountsResponse>;
-  // Discount Redemptions
+
+  /**
+   * This handler gets a discount redemption by the ID.
+   * @param {string} id the identifier of a discount redemption.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `discount redemption` object.
+   */
   getDiscountRedemption(id: string): Promise<GetDiscountRedemptionResponse>;
 
   /**
-   * @returns a paginated list of discount redemptions.
+   * This handler gets a paginatated object of all your discount redemptions.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
    */
   getDiscountRedemptions(): Promise<GetDiscountRedemptionsResponse>;
-  // License Keys
+
+  /**
+   * This handler gets a license key by the ID.
+   * @param {string} id the identifier of a license key.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns an `discount redemption` object.
+   */
   getLicenseKey(id: string): Promise<GetLicenseKeyResponse>;
 
   /**
-   * @returns a paginated list of license keys.
+   * This handler gets a paginatated object of all your license keys.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `discount redemptions` objects, ordered by created_at field in descending order.
    */
   getLicenseKeys(): Promise<GetLicenseKeysResponse>;
-  // License Keys Instances
+
+  /**
+   * This handler gets a license key instance by the ID.
+   * @param {string} id the identifier of a license key instance.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `license key instance` object.
+   */
   getLicenseKeyInstance(id: string): Promise<GetLicenseKeyInstanceResponse>;
 
   /**
-   * @returns a paginated list of license key instances.
+   * This handler gets a paginatated object of all your license key instances.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `license key instances` objects, ordered by created_at field in descending order.
    */
   getLicenseKeyInstances(): Promise<GetLicenseKeyInstancesResponse>;
-  // Checkouts
-  createCheckout(): Promise<CreateCheckoutResponse>;
+
+  /**
+   * This handler creates a custom checkout.
+   * @param {option} CheckoutOptions the configurations for the custome checkout page.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
+  createCheckout(options: CheckoutOptions): Promise<CreateCheckoutResponse>;
+
+  /**
+   * This handler gets a checkout by the ID.
+   * @param {string} id the identifier of a checkout.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/products
+   * @returns a `checkout` object.
+   */
   getCheckout(id: string): Promise<GetCheckoutResponse>;
 
   /**
-   * @returns a paginated list of checkouts.
+   * This handler gets a paginatated object of all your custom checkouts.
+   * @docs Refer to: https://docs.lemonsqueezy.com/api/customers
+   * @returns a set of `checkouts` objects, ordered by created_at field in descending order.
    */
   getCheckouts: () => Promise<GetCheckoutsResponse>;
 };
@@ -171,7 +308,7 @@ export type TLmnsqzyFunctions = {
   /**
    * a collection of handlers to interact with the LMNSQZY API
    */
-  lmnsqzy:() =>  TMethods;
+  lmnsqzy: () => TMethods;
   /**
    * a dummy string for showing that it works.
    */

@@ -19,7 +19,7 @@ export interface LmnsqzyResponse<
       total: number;
     };
   };
-  errors?: ApiError
+  errors?: ApiError;
 }
 
 export interface LmnsqzyError {

@@ -6,11 +6,11 @@ describe('createDiscount', () => {
     const { lmnsqzy } = connect(`${process.env.LMNSQZY_API_TOKEN}`);
     const { createDiscount } = lmnsqzy();
     let z = await createDiscount({
-      name: "10% off",
+      name: '10% off',
       code: '10PERC',
       amount: 13,
       amount_type: 'percent',
-      store_id: "14109"
+      store_id: '14109',
     });
     expect(z).toBeTruthy();
   });
