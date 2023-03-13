@@ -1,4 +1,5 @@
 import {
+  CheckoutOptions,
   CreateCheckoutResponse,
   GetCheckoutResponse,
   GetCheckoutsResponse,
@@ -11,6 +12,7 @@ import {
 import {
   CreateDiscountResponse,
   DeleteDiscountResponse,
+  DiscountOptions,
   GetDiscountResponse,
   GetDiscountsResponse,
 } from './domains/discounts';
@@ -126,7 +128,7 @@ export type TMethods = {
    */
   getSubscriptionInvoices(): Promise<GetSubscriptionInvoicesResponse>;
   // Discounts
-  createDiscount(): Promise<CreateDiscountResponse>;
+  createDiscount(options: DiscountOptions): Promise<CreateDiscountResponse>;
   getDiscount(id: string): Promise<GetDiscountResponse>;
   deleteDiscount(id: string): Promise<DeleteDiscountResponse>;
 

@@ -26,6 +26,7 @@ import {
 import {
   CreateDiscountResponse,
   DeleteDiscountResponse,
+  DiscountOptions,
   GetDiscountResponse,
   GetDiscountsResponse,
 } from './domains/discounts';
@@ -42,6 +43,7 @@ import {
   GetLicenseKeyInstancesResponse,
 } from './domains/license-key-instances';
 import {
+  CheckoutOptions,
   CreateCheckoutResponse,
   GetCheckoutResponse,
   GetCheckoutsResponse,
@@ -556,13 +558,33 @@ export const connect = (token: string): TLmnsqzyFunctions => {
 
     return r.json() as Promise<GetSubscriptionInvoicesResponse>;
   }
-  async function createDiscount(): Promise<CreateDiscountResponse> {
+  async function createDiscount(options: DiscountOptions): Promise<CreateDiscountResponse> {
+    let b = {
+      data: {
+        type: 'discounts',
+        attributes: {
+          name: options.name,
+          code: options.code,
+          amount: options.amount,
+          'amount_type': options.amount_type
+        },
+        relationships: {
+          store: {
+            data: {
+              type: 'stores',
+              id: options.store_id
+            }
+          }
+        }
+      }
+    }
     let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/discounts`, {
       method: 'POST',
       headers: {
         ...constants.LMNSQZY_HEADERS,
         Authorization: `Bearer ${token}`,
       },
+      body: JSON.stringify(b)
     });
 
     if (!r.ok) {
