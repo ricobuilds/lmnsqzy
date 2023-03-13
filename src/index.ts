@@ -5,7 +5,7 @@ import { GetUserResponse } from './domains/users';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
 import { LmnsqzyError } from './general/general.responses';
-import { GetProductRespense } from './domains/products';
+import { GetProductRespense, GetProductsResponse } from './domains/products';
 
 /**
  * This function helps you connect to the API endpoints.
@@ -161,9 +161,28 @@ export const connect = (token: string): TLmnsqzyFunctions => {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a set of `products` objects, ordered by created_at field in descending order.
    */
-  async function getProducts(): Promise<string> {
-    return ``;
+  async function getProducts(): Promise<GetProductsResponse> {
+    let r = await fetch(`${constants.LMNSQZY_BASE_URL}/v1/products`, {
+      method: 'GET',
+      headers: {
+        ...constants.LMNSQZY_HEADERS,
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!r.ok) {
+      const errors: GetProductRespense = {
+        jsonapi: {
+          version : '1.0'
+        },
+        errors: errorsTable[r.status]
+      }
+      return errors
+    }
+    
+    return r.json() as Promise<GetProductsResponse>;
   }
+
   async function getVariant(): Promise<string> {
     return ``;
   }

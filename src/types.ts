@@ -1,5 +1,5 @@
 import { GetCustomerResponse, GetCustomersResponse } from './domains/customers';
-import { GetProductRespense } from './domains/products';
+import { GetProductRespense, GetProductsResponse } from './domains/products';
 import { GetStoreResponse, GetStoresResponse } from './domains/stores';
 import { GetUserResponse } from './domains/users';
 
@@ -41,7 +41,7 @@ export type TMethods = {
   /**
    * @returns a paginated list of products.
    */
-  getProducts(): Promise<string>;
+  getProducts(): Promise<GetProductsResponse>;
   // Variants
   getVariant(): Promise<string>;
 
