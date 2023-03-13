@@ -43,7 +43,6 @@ import {
   GetLicenseKeyInstancesResponse,
 } from './domains/license-key-instances';
 import {
-  CheckoutOptions,
   CreateCheckoutResponse,
   GetCheckoutResponse,
   GetCheckoutsResponse,
