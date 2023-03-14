@@ -9,6 +9,9 @@ npm i lmnsqzy
 ```
 
 ## 🍋 Usage (WIP)
+
+![LMNSQZY Promo](https://user-images.githubusercontent.com/35407606/225133999-d747f518-9965-40c6-8fec-25935d2fbac4.png)
+
 ```tsx
 // ./lib/lmnsqzy.ts
 import { connect } from 'lmnsqzy';
