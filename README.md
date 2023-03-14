@@ -1,6 +1,8 @@
 # lmnsqzy
 **{ lmnsqzy }** is a Typescript-driven package for interacting with the LemonSqueezy API. Plug in your API token as an environment variable and start making some lemonade🍋.
 
+ ![commits](https://img.shields.io/github/commit-activity/m/0xreeko/lmnsqzy) • ![downloads](https://img.shields.io/npm/dw/lmnsqzy) • ![issues](https://img.shields.io/github/issues/0xreeko/lmnsqzy)
+
 ## 🛠 Getting Started
 ```
 npm i lmnsqzy
