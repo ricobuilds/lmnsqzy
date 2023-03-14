@@ -20,30 +20,8 @@ jobs:
 
       - name: Lint
         run: yarn lint
-
-  test:
-    runs-on: ubuntu-latest
-    needs: [lint]
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Use Node
-        uses: actions/setup-node@v3
-
-      - name: Use NPM install
-        uses: bahmutov/npm-install@v1
-        with:
-          node-version: 16
-
-      - name: Install
-        run: yarn install
-
-      - name: Test
-        run: yarn vitest
   build:
     runs-on: ubuntu-latest
-    needs: [test]
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3

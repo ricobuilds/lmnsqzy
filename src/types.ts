@@ -242,7 +242,7 @@ export type TMethods = {
    * @docs Refer to: https://docs.lemonsqueezy.com/api/products
    * @returns a `checkout` object.
    */
-  createCheckout<R>(options: CheckoutOptions): Promise<R>;
+  createCheckout<R>(options?: CheckoutOptions): Promise<R>;
 
   /**
    * This handler gets a checkout by the ID.
